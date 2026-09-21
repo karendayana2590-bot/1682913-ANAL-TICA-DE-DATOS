@@ -2,7 +2,7 @@
 
 **1682913 · Analítica de Datos · Nivel inicial · 12 horas sugeridas**
 
-[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clases/introduccion-python/Introduccion_Python_Analitica_Industrial.ipynb)
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb)
 
 ## Comienza aquí
 1. Abre el notebook en Colab con el botón anterior y guarda una copia, o descarga esta carpeta y ábrelo en Jupyter.
@@ -13,7 +13,7 @@
 GitHub muestra el contenido; la ejecución del código y los controles ocurre en Colab o Jupyter.
 
 ## Materiales
-- [Notebook de la clase](Introduccion_Python_Analitica_Industrial.ipynb): 68 celdas, explicaciones, ejercicios, soluciones y simulador.
+- [Notebook de la clase](Introduccion_Python_Analitica_Industrial.ipynb): Edición guiada 2: 89 celdas, veinte ejecuciones paso a paso, ocho retos, soluciones y simulador.
 - [Clase completa para lectura](CLASE_COMPLETA.md): todo el contenido en una página.
 - [Guía docente](GUIA_DOCENTE.md): secuencia, dinámicas, respuestas y criterios de revisión.
 - [Datos de producción](produccion.csv): doce registros sintéticos con dos líneas y seis días.

@@ -1,29 +1,11 @@
-# Introducción a Python para analítica industrial
-## 1682913 · ANALÍTICA DE DATOS
+# Python para analizar datos de producción
+**1682913 · Analítica de Datos · Cuaderno del estudiante · Edición guiada 2**
 
-**De cero a una decisión sustentada en datos.** Material original de formación, con datos sintéticos; no representa una empresa real.
+Este es el archivo **Introduccion_Python_Analitica_Industrial.ipynb** de la clase. Contiene las explicaciones, veinte ejecuciones guiadas y ocho retos. Los datos de la fábrica son sintéticos; el código sí se ejecuta y genera resultados.
 
-**Pregunta guía:** ¿producir más significa ser más productivo y tener mejor calidad?
+**Empieza aquí:** guarda una copia en Drive, conéctate al entorno y ejecuta de arriba abajo. Antes de cada celda encontrarás qué hacer y qué debería aparecer. Los títulos «Ejecución 01…20» son referencias de la clase; los números entre corchetes que muestra Colab cambian con el orden en que ejecutes.
 
-Trabaja en parejas: una persona escribe y otra verifica unidades, resultados y supuestos. Cambien de rol en cada reto. Sigue el ciclo **predice → ejecuta → modifica → explica**. No necesitas conocimientos previos de programación; sí operaciones aritméticas y porcentajes.
-
-### Resultados de aprendizaje
-1. Crear, ejecutar, guardar y reiniciar un notebook en Jupyter o Colab.
-2. Usar variables, tipos, operadores, colecciones, condicionales, ciclos y funciones.
-3. Importar librerías y distinguir el papel de NumPy, pandas y Matplotlib.
-4. Leer, validar, limpiar, filtrar, agrupar y exportar datos.
-5. Calcular producción, calidad, cumplimiento y productividad con denominadores correctos.
-6. Justificar una recomendación y reconocer lo que los datos no permiten concluir.
-
-### Ruta sugerida: 12 horas, incluidas pausas
-| Sesión | Contenido | Minutos |
-|---|---|---:|
-| 1 | Diagnóstico 15 · entornos 35 · variables 45 · colecciones 35 · pausa 15 · decisiones 40 · ciclos 40 · salida 15 | 240 |
-| 2 | Repaso 15 · funciones 50 · errores 25 · librerías 20 · pausa 15 · NumPy 45 · pandas 55 · salida 15 | 240 |
-| 3 | Caso y datos 20 · validación 35 · indicadores 50 · pausa 15 · visualización 30 · simulación 25 · reto 45 · cierre 20 | 240 |
-
-### Diagnóstico sin calificación
-Debate: ¿qué es una variable?, ¿qué sucede si dividimos por cero?, ¿qué diferencia hay entre 90 unidades y 90 unidades/hora?, ¿qué datos pedirías antes de comparar dos turnos?
+En los retos, escribe tu solución en la celda señalada. No es necesario completar los retos para que los ejemplos siguientes funcionen. Cuando quieras volver al ejemplo original, restaura sus valores y ejecuta nuevamente desde arriba.
 
 
 ## 1. Python y los entornos de trabajo
@@ -40,12 +22,17 @@ Un notebook `.ipynb` combina celdas de texto Markdown, código y resultados. Un 
 | Uso propuesto | Trabajo local y control del entorno | Comenzar con poca instalación |
 
 ### Opción A · Colab paso a paso
-1. Abre https://colab.research.google.com/ e inicia sesión cuando se solicite.
-2. Usa **Archivo → Subir notebook** y selecciona este `.ipynb`. Los nombres de menú pueden variar con el idioma.
+El archivo de esta clase se llama **Introduccion_Python_Analitica_Industrial.ipynb**. Un `.ipynb` es un cuaderno que contiene explicaciones, código y espacios para resolver los ejercicios; no debes buscar un archivo desconocido ni crearlo desde cero.
+
+1. Pulsa [Abrir el cuaderno de esta clase en Colab](https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb) e inicia sesión con Google si se solicita. Este enlace abre directamente el archivo de la clase.
+2. Selecciona **Archivo → Guardar una copia en Drive** y trabaja en esa copia. Si prefieres subir el archivo manualmente, primero [descarga el cuaderno de la clase](https://raw.githubusercontent.com/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb). Luego abre Colab, usa **Archivo → Subir notebook** y selecciona **Introduccion_Python_Analitica_Industrial.ipynb** desde la carpeta donde lo descargaste, normalmente **Descargas**. Los nombres de menú pueden variar con el idioma.
 3. Conecta el entorno y ejecuta la primera celda con **Shift+Enter**.
 4. Prueba una celda de texto y otra de código. El botón `+ Código` agrega instrucciones; `+ Texto` agrega explicaciones.
 5. Guarda una copia en Drive o descarga el notebook. Descargar el notebook no descarga automáticamente los CSV generados.
-6. Para practicar con tu CSV, súbelo desde el panel de archivos. Vuelve a subirlo si el entorno se reinicia o desaparece.
+6. El caso industrial ya incluye los datos dentro del cuaderno: **no necesitas subir un CSV para empezar**. Para practicar además la lectura de archivos, descarga **produccion.csv** desde **Materiales → Descargar datos CSV** en la página de la clase y súbelo desde el panel de archivos de Colab. Después podrás leerlo con `pd.read_csv("produccion.csv")`. Vuelve a subirlo si el entorno se reinicia o desaparece.
+
+### Qué vas a ejecutar
+Los ocho retos y el programa industrial son ejercicios ejecutables en Python. Los ejemplos iniciales usan números definidos en sus celdas; el proyecto final trabaja con doce registros sintéticos de dos líneas durante seis días. Los datos son hipotéticos para aprender, pero los cálculos, las validaciones y los archivos que genera el programa son reales. La página web permite usar el laboratorio y la autoevaluación; el código Python se ejecuta en el cuaderno de Colab o Jupyter.
 
 ### Opción B · Jupyter paso a paso
 Con Python 3 instalado, abre una terminal en la carpeta de la clase. En Windows puedes usar `py` en lugar de `python` si ese es el lanzador disponible.
@@ -57,7 +44,7 @@ Activa el entorno con `.venv\Scripts\Activate.ps1` en PowerShell o `source .venv
 python -m pip install jupyterlab numpy pandas matplotlib ipywidgets
 python -m jupyterlab
 ```
-Abre este notebook desde el explorador de Jupyter. Si prefieres la interfaz clásica Jupyter Notebook, instala `notebook` y ejecuta `python -m notebook`.
+Descarga **Introduccion_Python_Analitica_Industrial.ipynb**, guárdalo en la carpeta de la clase y ábrelo desde el explorador de archivos de Jupyter. Si prefieres la interfaz clásica Jupyter Notebook, instala `notebook` y ejecuta `python -m notebook`.
 
 ### Cómo trabajar sin perderte
 - Ejecuta de arriba abajo; una celda puede necesitar variables de celdas anteriores.
@@ -69,6 +56,17 @@ Abre este notebook desde el explorador de Jupyter. Si prefieres la interfaz clá
 **Actividad:** escribe tu nombre en una celda de texto, ejecuta un saludo, cambia el mensaje y reinicia el kernel. Explica qué desapareció y qué permaneció.
 
 Referencias de instalación: [Jupyter](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html) y [preguntas frecuentes de Colab](https://research.google.com/colaboratory/faq.html).
+
+
+### Ejecución 01 · Comprobar que Python funciona
+
+**Haz esto:** Ejecuta la celda completa con el botón triangular de su izquierda o Shift+Enter.
+
+**Debes ver:** Aparecen un saludo, la versión de Python y 95.0 % de calidad.
+
+**Comprende:** Python ejecuta instrucciones. print muestra valores; 950 / 1000 * 100 transforma una razón en porcentaje.
+
+**Prueba y explica:** Cambia solo el mensaje del saludo y vuelve a ejecutar.
 
 
 ```python
@@ -92,6 +90,17 @@ Una variable es un nombre asociado a un valor. `=` asigna; `==` compara. Usa nom
 Operadores: `+`, `-`, `*`, `/` (división), `//` (cociente entero), `%` (residuo), `**` (potencia). Usa paréntesis para hacer explícito el orden. Los decimales se escriben con punto en el código. Una tasa `0.95` corresponde a `95 %`; no multipliques dos veces por 100.
 
 
+### Ejecución 02 · Guardar datos en variables
+
+**Haz esto:** Ejecuta sin cambiar los valores iniciales; identifica producidas, defectuosas y horas.
+
+**Debes ver:** 950 unidades buenas, calidad 95.00 %, 39 cajas completas y 14 unidades restantes.
+
+**Comprende:** Cada nombre representa un dato. Primero se calculan buenas; después se usan para calcular calidad y cajas.
+
+**Prueba y explica:** Cambia defectuosas de 50 a 20 y predice las buenas antes de ejecutar.
+
+
 ```python
 linea = "A"
 producidas = 1000
@@ -111,6 +120,17 @@ print("Cajas completas de 24:", buenas // 24, "Unidades restantes:", buenas % 24
 horas = float(input("Horas trabajadas (usa punto decimal): "))
 ```
 Los valores decimales pueden tener pequeñas aproximaciones binarias. Redondea para mostrar; conserva precisión durante los cálculos.
+
+
+### Ejecución 03 · Convertir texto a números
+
+**Haz esto:** Compara las dos líneas que usan 100 y 20: una trabaja con texto y otra con enteros.
+
+**Debes ver:** 8.0; 10020; 120; tasa de rechazo 5.0 % con los valores iniciales.
+
+**Comprende:** Sumar textos concatena. int y float convierten valores. El porcentaje depende de las variables de la celda anterior.
+
+**Prueba y explica:** Vuelve a los datos iniciales si quieres comparar con estas respuestas de referencia.
 
 
 ```python
@@ -150,6 +170,17 @@ print(buenas / (7 * 3))  # 39 unidades buenas/hora-persona
 Una **lista** almacena una secuencia modificable; una **tupla** agrupa elementos que no se reasignan individualmente; un **diccionario** relaciona claves con valores; un **conjunto** conserva elementos únicos.
 
 Los índices comienzan en cero. `lista[0]` es el primer elemento y `lista[-1]` el último. El corte `lista[1:3]` incluye las posiciones 1 y 2, pero excluye la 3. Modificar una lista afecta a otros nombres que apunten a la misma lista; usa `.copy()` si necesitas una copia independiente superficial.
+
+
+### Ejecución 04 · Organizar varios registros
+
+**Haz esto:** Ejecuta y localiza el primer dato, el último, el corte y el valor agregado con append.
+
+**Debes ver:** La lista tiene seis días y suma 5520 unidades; el diccionario tiene 970 buenas.
+
+**Comprende:** Lista: secuencia de valores. Diccionario: registro con campos. Los índices comienzan en cero.
+
+**Prueba y explica:** Agrega un séptimo valor a una copia de la lista y vuelve a sumar.
 
 
 ```python
@@ -193,6 +224,17 @@ print(registro)  # 30 unidades/hora-persona
 Comparaciones: `==`, `!=`, `<`, `<=`, `>`, `>=`. Conecta condiciones con `and`, `or` y `not`. Para comprobar ausencia usa `valor is None`.
 
 **Regla didáctica de calidad:** verde ≥ 98 %, amarillo ≥ 95 % y < 98 %, rojo < 95 %. Son umbrales de práctica, no estándares universales. En una empresa deben acordarse según producto y proceso.
+
+
+### Ejecución 05 · Tomar decisiones con condiciones
+
+**Haz esto:** Identifica el bloque que corresponde a calidad = 96.5 y ejecuta.
+
+**Debes ver:** Amarillo y el mensaje de datos aptos para calcular unidades/hora.
+
+**Comprende:** Se ejecuta la primera condición verdadera. La sangría delimita cada rama.
+
+**Prueba y explica:** Prueba exactamente 95 y 98 para revisar las fronteras del semáforo.
 
 
 ```python
@@ -245,6 +287,17 @@ else:
 Usa `for` para recorrer una colección o un rango. `range(1, 4)` genera 1, 2 y 3. `enumerate()` entrega posición y valor; `zip()` permite recorrer dos colecciones a la vez, pero se detiene en la más corta.
 
 `while` repite mientras una condición sea verdadera: debe existir un cambio que permita terminar. `break` termina el ciclo; `continue` pasa a la siguiente iteración. Un **acumulador** suma valores; un **contador** cuenta ocurrencias. Una comprensión de listas abrevia transformaciones simples, sin reemplazar la claridad.
+
+
+### Ejecución 06 · Repetir con ciclos
+
+**Haz esto:** Sigue el acumulado en cada vuelta del for y luego observa el while.
+
+**Debes ver:** El acumulado final es 3590. Hay tres inspecciones. La lectura se detiene al encontrar -1.
+
+**Comprende:** for recorre datos; while necesita una condición de salida. continue omite una vuelta y break termina.
+
+**Prueba y explica:** Explica por qué el 30 situado después del -1 no se procesa.
 
 
 ```python
@@ -300,6 +353,17 @@ print("Alertas:", alertas)  # 2
 `def` define una función; los **parámetros** son los nombres de entrada y los **argumentos** son los valores que entregas. `return` devuelve un resultado; `print` solamente lo muestra. Una variable creada dentro de una función normalmente es local.
 
 Una buena función tiene un propósito, nombres claros, documentación breve y validación de sus entradas. Un argumento predeterminado evita repetir una opción habitual. Las anotaciones de tipo ayudan a leer, pero no validan automáticamente.
+
+
+### Ejecución 07 · Reutilizar una función
+
+**Haz esto:** Ejecuta la definición y las dos llamadas al final de la celda.
+
+**Debes ver:** Para 840, 21, 7 y 3: 819 buenas, 97.5 % de calidad, 117 buenas/hora y 39 buenas/hora-persona. Sin producción, calidad es None.
+
+**Comprende:** Los argumentos entran, la validación revisa y return devuelve un diccionario de indicadores.
+
+**Prueba y explica:** Explica la diferencia entre mostrar un valor y devolverlo.
 
 
 ```python
@@ -373,6 +437,17 @@ print(cumplimiento(1100, 1000))  # 110: puede superar la meta
 Lee la última línea del error y luego la ubicación. Reproduce con pocos datos. `try/except` permite responder a errores esperados; no uses un `except` vacío que oculte fallos. `assert` ayuda en ejercicios y pruebas; la validación del programa debe usar condiciones y excepciones.
 
 
+### Ejecución 08 · Reconocer un error esperado
+
+**Haz esto:** Ejecuta el ejemplo completo, incluido try/except.
+
+**Debes ver:** Se informa que la entrada fue rechazada y luego aparecen las comprobaciones superadas.
+
+**Comprende:** El error es intencional: no puede haber 120 defectuosas entre 100 producidas. La celda lo captura para seguir.
+
+**Prueba y explica:** Distingue ese mensaje controlado de un error rojo que interrumpe la ejecución.
+
+
 ```python
 try:
     calcular_indicadores(100, 120, 8)
@@ -396,6 +471,17 @@ Un **módulo** es código importable; un **paquete** organiza módulos. `import 
 Si hace falta, ejecuta `%pip install numpy pandas matplotlib ipywidgets` en una nueva celda y reinicia el kernel si el entorno lo pide. `%pip` es una instrucción del notebook, no Python estándar. Registra versiones y usa un entorno virtual para reproducir un trabajo.
 
 
+### Ejecución 09 · Cargar las librerías
+
+**Haz esto:** Ejecuta antes de los ejemplos de NumPy y pandas.
+
+**Debes ver:** Se muestran las versiones de NumPy y pandas y la carpeta de trabajo. Las versiones pueden variar.
+
+**Comprende:** Importar pone las herramientas disponibles en este entorno. No carga todavía los datos de producción.
+
+**Prueba y explica:** Si falta un paquete, ejecuta %pip install numpy pandas matplotlib ipywidgets en una celda aparte y vuelve aquí.
+
+
 ```python
 import numpy as np
 import pandas as pd
@@ -411,6 +497,17 @@ Una lista de Python es flexible; un arreglo NumPy suele almacenar elementos de u
 `shape` indica dimensiones, `ndim` cuántos ejes hay y `dtype` el tipo. En una matriz de días × líneas, `axis=0` resume sobre días y entrega un resultado por línea; `axis=1` resume sobre líneas y entrega un resultado por día.
 
 Una máscara booleana selecciona elementos. La **vectorización** expresa una operación sobre el arreglo entero. El **broadcasting** permite operaciones entre formas compatibles, como dividir cada columna por su meta. `np.nan` representa un dato numérico ausente; no es un cero.
+
+
+### Ejecución 10 · Calcular con NumPy
+
+**Haz esto:** Ejecuta y compara lista * 2 con arreglo * 2.
+
+**Debes ver:** La matriz tiene forma (3, 2); las sumas por línea son 2550 y 2850; las sumas por día son 1700, 1800 y 1900.
+
+**Comprende:** Un arreglo opera elemento a elemento. El eje elegido determina qué dimensión se resume.
+
+**Prueba y explica:** Explica por qué np.nan no debe reemplazarse automáticamente por cero.
 
 
 ```python
@@ -462,6 +559,17 @@ Una **Series** es una columna con índice; un **DataFrame** es una tabla. El ín
 `df["columna"]` selecciona una serie; `df[["a", "b"]]` una tabla. `.loc` selecciona por etiquetas o condiciones; `.iloc` por posiciones. Usa `&` para «y», `|` para «o» y paréntesis en cada condición vectorizada. Evita asignaciones encadenadas; usa `.loc` o `.copy()`.
 
 
+### Ejecución 11 · Explorar una tabla con pandas
+
+**Haz esto:** Ejecuta; revisa la tabla, los tipos, el filtro y la agrupación.
+
+**Debes ver:** La tabla original tiene tres filas. El filtro A y producidas ≥ 110 selecciona el registro de 120 unidades.
+
+**Comprende:** Un DataFrame es una tabla. Filtrar selecciona registros y agrupar resume varios registros.
+
+**Prueba y explica:** Busca las 215 buenas de A y las 141 buenas de B en el resumen.
+
+
 ```python
 mini = pd.DataFrame({"linea": ["A", "B", "A"], "producidas": [100, 150, 120], "defectuosas": [2, 9, 3]})
 display(mini.head())
@@ -481,6 +589,17 @@ Lee CSV con `pd.read_csv("archivo.csv")`. Si usa `;` y coma decimal, especifica 
 `isna()` detecta faltantes; `duplicated()` identifica repetidos; `pd.to_numeric(..., errors="coerce")` convierte texto inválido en ausente para detectarlo. `dropna()` descarta y `fillna()` imputa: ambas decisiones requieren justificación. No borres duplicados sin definir qué identifica un registro.
 
 `merge` combina tablas por una clave. Una unión mal definida multiplica filas y puede inflar la producción. Usa `validate` para verificar la relación esperada. `pivot_table` reorganiza datos para comparar grupos.
+
+
+### Ejecución 12 · Guardar, leer y unir tablas
+
+**Haz esto:** Ejecuta y comprueba que aparezca mini_produccion.csv en el panel de archivos.
+
+**Debes ver:** Se agregan los productos Envase/Tapa, se conserva la cantidad de filas y se muestra el resumen por línea.
+
+**Comprende:** El archivo guarda una tabla. merge usa una clave y validate evita una relación inesperada.
+
+**Prueba y explica:** Explica qué podría pasar si el catálogo repitiera una misma línea.
 
 
 ```python
@@ -534,18 +653,67 @@ Una unidad defectuosa se cuenta una vez aunque tenga varios defectos. No hay rep
 Los datos están incluidos en el notebook para ejecutarlo sin descargar archivos adicionales. El CSV que se escribe aquí contiene los mismos registros que el archivo entregado.
 
 
+### Ejecución 13 · Elegir y cargar los datos industriales
+
+**Haz esto:** Para la primera práctica deja USAR_ARCHIVO_PROPIO = False y ejecuta. No subas archivos todavía.
+
+**Debes ver:** Con los datos incluidos aparecen doce registros, dos líneas y siete columnas originales. Se informa el origen de los datos.
+
+**Comprende:** Esta es la única celda de entrada del caso: raw contiene los registros que luego se validarán.
+
+**Prueba y explica:** Para practicar la carga manual, sigue la explicación de archivo propio debajo; después vuelve a ejecutar desde aquí.
+
+
 ```python
 from io import StringIO
 CSV_DATOS = 'fecha,linea,producidas,defectuosas,horas,operarios,meta\n2026-09-01,A,1000,20,8,4,1000\n2026-09-01,B,900,45,8,3,950\n2026-09-02,A,1100,22,8,4,1000\n2026-09-02,B,950,19,8,3,950\n2026-09-03,A,980,49,8,4,1000\n2026-09-03,B,1000,20,8,3,950\n2026-09-04,A,1050,21,8,4,1000\n2026-09-04,B,920,46,8,3,950\n2026-09-05,A,1080,54,8,4,1000\n2026-09-05,B,980,49,8,3,950\n2026-09-06,A,1020,20,8,4,1000\n2026-09-06,B,960,24,8,3,950\n'
-raw = pd.read_csv(StringIO(CSV_DATOS))
-raw.to_csv("produccion.csv", index=False)
+USAR_ARCHIVO_PROPIO = False
+ARCHIVO_PROPIO = "produccion_usuario.csv"
+
+if USAR_ARCHIVO_PROPIO:
+    archivo = Path(ARCHIVO_PROPIO)
+    if not archivo.is_file():
+        raise FileNotFoundError(f"Sube {ARCHIVO_PROPIO} al panel de archivos antes de continuar")
+    raw = pd.read_csv(archivo)
+    print("Origen: archivo subido por ti →", ARCHIVO_PROPIO)
+else:
+    raw = pd.read_csv(StringIO(CSV_DATOS))
+    print("Origen: datos sintéticos incluidos en el cuaderno")
+
+print("Filas:", len(raw), "Columnas:", len(raw.columns))
 display(raw)
 ```
+
+### Práctica opcional: cargar el CSV desde tu computador
+
+1. En la página de la clase abre **Materiales → Descargar datos CSV**. El archivo se llama **produccion.csv**.
+2. En tu computador, crea una copia con el nombre **produccion_usuario.csv**. Conserva la extensión `.csv` una sola vez.
+3. En Colab, abre el panel de **Archivos** (icono de carpeta a la izquierda), pulsa **Subir** y selecciona esa copia desde Descargas o la carpeta donde la guardaste.
+4. Espera a que **produccion_usuario.csv** aparezca en la lista. Esto carga datos, no un notebook.
+5. En la celda anterior cambia solo **USAR_ARCHIVO_PROPIO = False** por **USAR_ARCHIVO_PROPIO = True** y vuelve a ejecutarla.
+6. Debe mostrarse «Origen: archivo subido por ti». Con la copia sin modificar seguirás viendo doce filas y siete columnas.
+7. Continúa con la validación y vuelve a ejecutar todos los pasos del caso hasta exportar. Si cambias datos, no reutilices resultados anteriores.
+
+El código no sobrescribe el archivo que subes. Si reinicias o pierdes el entorno de Colab, puede ser necesario subirlo de nuevo. Si necesitas trabajar sin subir archivos, vuelve a poner `False`.
+
+Para un archivo distinto respeta las columnas `fecha,linea,producidas,defectuosas,horas,operarios,meta`, fechas como `2026-09-01`, separador coma y punto decimal. El catálogo del ejercicio admite A y B. No agregues dos registros de la misma fecha y línea. Si tu CSV usa punto y coma, adapta la lectura a `pd.read_csv(archivo, sep=";", decimal=",")` y verifica los tipos antes de continuar.
+
 
 ## 12. Validar antes de analizar
 El programa rechaza registros inconsistentes: no corrige datos por adivinación. Para el caso completo no se permiten faltantes. En otro proyecto podrías separar registros rechazados, informar su proporción y pedir corrección a la fuente.
 
 **Taller de detectives:** crea una copia de `raw`, cambia horas a cero, defectuosas a 2000 o línea a `C`, e intenta validarla. Luego duplica una fila. Explica cada mensaje. No modifiques la tabla original para continuar la clase.
+
+
+### Ejecución 14 · Validar el archivo
+
+**Haz esto:** Ejecuta la definición de validar_datos y su llamada con raw.
+
+**Debes ver:** Con el conjunto incluido: Registros válidos: 12.
+
+**Comprende:** Se verifican columnas, fechas, faltantes, enteros, rangos y clave fecha-línea. No se inventan correcciones.
+
+**Prueba y explica:** Si tu archivo falla, corrígelo en la fuente, vuelve a cargarlo y repite este paso.
 
 
 ```python
@@ -585,6 +753,17 @@ df = validar_datos(raw)
 print("Registros válidos:", len(df))
 ```
 
+### Ejecución 15 · Probar una entrada incorrecta
+
+**Haz esto:** Ejecuta la celda que crea prueba = raw.copy().
+
+**Debes ver:** Error detectado correctamente: Horas, operarios y meta deben ser positivos.
+
+**Comprende:** Se cambia una copia, no la tabla original. El error se provoca para demostrar la validación.
+
+**Prueba y explica:** No copies ese cero a tus datos válidos.
+
+
 ```python
 prueba = raw.copy()
 prueba.loc[0, "horas"] = 0
@@ -609,6 +788,17 @@ Calidad y rechazo deben sumar 100 % cuando hay producción. Cumplimiento puede s
 
 ### Regla crucial: razón de sumas
 La calidad global es `suma(buenas)/suma(producidas)`, no el promedio simple de porcentajes. Ejemplo: un turno con 9 buenas de 10 y otro con 100 buenas de 100 da 99.09 % global, no 95 %. Los tamaños de los turnos son distintos.
+
+
+### Ejecución 16 · Calcular indicadores por registro y línea
+
+**Haz esto:** Ejecuta después de validar. Lee las columnas buenas, calidad_pct y productividad_laboral.
+
+**Debes ver:** Con los datos incluidos: A = 6044 buenas y B = 5507 buenas. Sus productividades son aproximadamente 31.48 y 38.24 buenas/hora-persona.
+
+**Comprende:** Los porcentajes agrupados se calculan dividiendo sumas, no promediando porcentajes sin ponderación.
+
+**Prueba y explica:** Señala el denominador de calidad y el de productividad; explica por qué son distintos.
 
 
 ```python
@@ -643,6 +833,17 @@ display(por_linea.round(2))
 ```
 
 **Interpretación de las horas:** al sumar horas de dos líneas simultáneas obtienes horas-línea, no el tiempo de reloj transcurrido en la planta. En cambio, sumar horas-persona representa el esfuerzo laboral total del caso. Escribe siempre la unidad completa.
+
+
+### Ejecución 17 · Construir el resumen global
+
+**Haz esto:** Ejecuta y contrasta con los totales de referencia.
+
+**Debes ver:** 11940 producidas, 11551 buenas, calidad global 96.74 % y productividad global 34.38 buenas/hora-persona.
+
+**Comprende:** El resumen global usa todas las unidades y todas las horas-persona del conjunto válido.
+
+**Prueba y explica:** Si agregaste datos propios, tus resultados serán distintos: verifica con las fórmulas, no con estos totales fijos.
 
 
 ```python
@@ -688,6 +889,17 @@ Usa barras para comparar categorías y líneas para observar evolución temporal
 **Antes de ejecutar:** dibuja a mano cuál crees que será la barra más alta de producción y la de productividad. Después contrasta con los gráficos.
 
 
+### Ejecución 18 · Graficar los resultados
+
+**Haz esto:** Ejecuta y observa las tres gráficas debajo de la celda.
+
+**Debes ver:** A lidera producción; B lidera productividad laboral. Se genera indicadores.png.
+
+**Comprende:** Un gráfico responde una pregunta concreta y debe mostrar unidades. Una barra mayor no significa mejor desempeño en todo.
+
+**Prueba y explica:** Redacta una frase con cifra y unidad para cada una de las primeras dos gráficas.
+
+
 ```python
 fig, axes = plt.subplots(1, 3, figsize=(15, 4))
 axes[0].bar(por_linea["linea"], por_linea["producidas"], color="#2563eb")
@@ -716,6 +928,17 @@ Modifica producción, tasa de rechazo, horas y operarios. **Predice primero**. L
 Este es un modelo aritmético, no una predicción causal. Cambiar personal podría afectar velocidad, seguridad o calidad; el modelo no incluye esos efectos.
 
 
+### Ejecución 19 · Experimentar con un escenario
+
+**Haz esto:** Ejecuta. Si aparecen controles, modifícalos; si no, usa una nueva celda con simular(1000, 2.0, 8.0, 4).
+
+**Debes ver:** El escenario inicial produce 950 buenas, 95 % de calidad y aproximadamente 29.69 buenas/hora-persona. Con 2 % de rechazo: 980, 98 % y 30.63.
+
+**Comprende:** El simulador es una comparación aritmética de supuestos, no una predicción causal del proceso.
+
+**Prueba y explica:** Conserva la producción y baja el rechazo. Explica qué indicador cambia y por qué.
+
+
 ```python
 def simular(producidas=1000, rechazo_pct=5.0, horas=8.0, operarios=4):
     defectuosas = round(producidas * rechazo_pct / 100)
@@ -739,6 +962,17 @@ else:
 
 ## 16. Exportar resultados y comunicar una decisión
 El archivo de detalle permite auditar registros y el resumen responde preguntas gerenciales. Exportar conserva datos, pero también necesitas documentar fórmulas, filtros y supuestos. En Colab descarga los archivos desde el panel de archivos; son temporales dentro del entorno.
+
+
+### Ejecución 20 · Exportar y entregar el análisis
+
+**Haz esto:** Ejecuta al terminar los cálculos. Abre el panel de archivos de Colab y actualiza su lista si hace falta.
+
+**Debes ver:** Aparecen detalle_indicadores.csv, resumen_por_linea.csv e indicadores.png.
+
+**Comprende:** Guardar archivos en el entorno temporal no los descarga al computador. Cada archivo debe descargarse antes de cerrar la sesión.
+
+**Prueba y explica:** Descarga esos tres archivos y tu copia del notebook; agrega una conclusión con dos cifras, una limitación y una recomendación.
 
 
 ```python

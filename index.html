@@ -1,0 +1,513 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Clase interactiva de introducción a Python para analítica industrial: Jupyter, Colab, fundamentos, NumPy, pandas y laboratorio de indicadores."><title>Aula · Python para Analítica de Datos</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;font:16px/1.7 Arial,sans-serif;color:#18324d;background:linear-gradient(135deg,#eaf4fb,#f8fbfe 50%,#e7f1f8)}a{color:#075ca6;text-underline-offset:3px}a:hover{color:#063965}button,input,select,textarea{font:inherit}button,.button{cursor:pointer;border:0;border-radius:9px;padding:11px 17px;background:#073d73;color:#fff;font-weight:bold;text-decoration:none;display:inline-block}button:hover,.button:hover{background:#0a62a9;color:#fff}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #ca8505;outline-offset:3px}header{background:linear-gradient(120deg,#072d59,#0b66b5);color:#fff;padding:40px 0}header a{color:#fff}.wrap{max-width:1180px;margin:auto;padding:20px}.hero{display:grid;grid-template-columns:1.5fr .7fr;gap:35px;align-items:center}.hero h1{font-size:clamp(30px,4vw,46px);line-height:1.15;margin:15px 0}.hero p{max-width:700px}.hero-visual{background:#ffffff15;border:1px solid #ffffff35;border-radius:22px;padding:28px;text-align:center}.big{font-size:65px}.badge{display:inline-block;padding:4px 12px;border-radius:24px;background:#dceeff;color:#073d73;font-size:12px;letter-spacing:.06em;font-weight:bold}.card{background:#fff;border:1px solid #dfebf5;border-radius:17px;padding:30px;margin:22px 0;box-shadow:0 8px 28px #092d5012}.card h2{color:#073d73;font-size:27px;line-height:1.3;margin-top:10px}.card h3{color:#07518d;line-height:1.4;margin-top:30px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:15px}.module{background:linear-gradient(145deg,#fff,#eaf5fd);padding:20px;border:1px solid #d9e9f5;border-radius:14px;text-decoration:none;color:#18324d}.module b{display:block;font-size:18px;color:#073d73}.module .icon{font-size:32px}.box{background:#e9f4fc;padding:18px;border-radius:12px;margin:15px 0}.green{background:#e6f6ec}.yellow{background:#fff2d5}.tabs{position:sticky;top:0;background:#fffffff2;backdrop-filter:blur(10px);z-index:4;border-bottom:1px solid #d7e6f2}.tabinner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;gap:8px;overflow:auto;white-space:nowrap}.tabs a{padding:7px 12px;background:#e7f2fb;border-radius:8px;text-decoration:none;font-weight:bold;font-size:14px}.table-scroll{overflow:auto;margin:18px 0}table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:11px;text-align:left;border-bottom:1px solid #dbe7ef}th{background:#e7f2fa;color:#073d73}details{background:#f8fbfe;border:1px solid #d7e4ef;border-radius:11px;padding:13px 17px;margin:15px 0}summary{font-weight:bold;color:#07477f;cursor:pointer}pre{background:#0b233a;color:#e0efff;padding:22px;overflow:auto;border-radius:11px;font-size:14px;line-height:1.6;margin:0}code{font-family:Consolas,monospace}p code,li code,td code{background:#eaf2f9;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.code-wrap{position:relative;margin:17px 0;padding-top:34px;background:#102f4d;border-radius:11px;overflow:hidden}.copy{position:absolute;top:3px;right:7px;font-size:11px;padding:3px 10px;background:#29516f}.code-label{font-size:12px;color:#536b80}.code-link{font-size:13px;margin-top:5px}.complete{display:flex;align-items:center;gap:9px;margin-top:25px;border-top:1px solid #e1eaf2;padding-top:15px;font-size:14px;font-weight:bold}.complete input{width:19px;height:19px}input[type=number],select,textarea{width:100%;padding:10px;border:1px solid #acbfd1;border-radius:8px;background:#fff;color:#18324d}label{font-weight:bold;display:block}fieldset{border:1px solid #d3e3ef;padding:18px;border-radius:12px;margin:18px 0}legend{font-weight:bold;padding:0 8px}.result{font-size:27px;font-weight:bold;color:#073d73}.result small{font-size:12px;display:block;font-weight:normal}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.secondary{background:#e4eff8;color:#073d73}.progress{height:8px;background:#dbe9f4;border-radius:10px;overflow:hidden}.progress span{display:block;height:100%;background:#087d65;width:0}.section-index{columns:2;column-gap:30px}.section-index li{break-inside:avoid;margin-bottom:6px}.feedback{min-height:28px;font-weight:bold;margin-top:9px}.quiz label{display:block;font-weight:normal;padding:5px}.quiz input{margin-right:9px}.bar-row{display:grid;grid-template-columns:75px 1fr 95px;gap:12px;align-items:center;margin:12px 0}.bar-track{background:#e2edf6;border-radius:6px;height:24px;overflow:hidden}.bar-fill{background:#0b66b5;height:100%}.bar-row:nth-child(2) .bar-fill{background:#06806c}.note{font-size:13px;color:#506c83}footer{background:#072d59;color:#dceaf7;text-align:center;padding:30px;margin-top:35px}.skip{position:absolute;left:10px;top:-80px;background:white;padding:10px;z-index:9}.skip:focus{top:10px}.error{color:#a32222}.empty{color:#566b7c}textarea{min-height:140px}body.visual-mode .lesson{display:none}body.visual-mode .lesson.visual-keep{display:block}@media(max-width:700px){.wrap{padding:14px}.hero{grid-template-columns:1fr}.hero-visual{display:none}.card{padding:20px}.card h2{font-size:24px}.section-index{columns:1}.tabinner{padding:10px}.grid{grid-template-columns:1fr}.bar-row{grid-template-columns:65px 1fr 82px;font-size:13px}}@media print{.tabs,.actions,.copy,.complete,header .hero-visual,.no-print{display:none}body{background:white}.card{box-shadow:none;break-inside:auto;border:0}pre{white-space:pre-wrap}header{background:white;color:#18324d}.wrap{max-width:none}details>*{display:block}a{color:#18324d}.lesson{display:block!important}}</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a><header><div class="wrap hero"><div><span class="badge">PORTAL DEL ESTUDIANTE · 1682913</span><h1>Introducción a Python<br>para analítica de datos</h1><p>Ingeniería Industrial · Variables, decisiones, ciclos y funciones para comprender la producción, la calidad y la productividad.</p><div class="actions"><a class="button" href="#tema-1">Comenzar la clase ↓</a><a class="button secondary" href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Abrir Python en Colab ↗</a></div><p class="note" style="color:#d5e9ff">Ejemplos de Python · Ejercicios · Aplicaciones industriales</p></div><div class="hero-visual"><div class="big" aria-hidden="true">🐍 📊</div><h2>PROGRAMAR · ANALIZAR · DECIDIR</h2><p>Datos → Python → Indicadores → Decisiones</p></div></div></header><nav class="tabs" aria-label="Navegación de la clase"><div class="tabinner"><a href="#tema-1">💻 Entornos</a><a href="#tema-2">🐍 Fundamentos</a><a href="#tema-9">📊 NumPy y pandas</a><a href="#tema-11">🏭 Proyecto</a><a href="#laboratorio">🧪 Laboratorio</a><a href="#evaluacion">📋 Evaluación</a><a href="#recursos">📥 Materiales</a></div></nav><main class="wrap" id="contenido"><section class="card lesson" id="tema-1"><span class="badge">BLOQUE 01</span><h2>1. Python y los entornos de trabajo</h2>
+<p>Python es un lenguaje: expresamos instrucciones para que un intérprete las ejecute. Un <strong>algoritmo</strong> es una secuencia de pasos; un <strong>programa</strong> es su implementación. Un <strong>editor</strong> permite escribir; el <strong>intérprete</strong> ejecuta; el <strong>kernel</strong> conserva el estado del notebook; una <strong>librería</strong> aporta funciones reutilizables.</p>
+<p>Un notebook <code>.ipynb</code> combina celdas de texto Markdown, código y resultados. Un archivo <code>.py</code> contiene código y resulta útil para ejecutar tareas completas. GitHub permite consultar el notebook, pero para ejecutar sus celdas debes abrirlo en Jupyter o Colab.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Aspecto</th><th scope="col">Jupyter en tu equipo</th><th scope="col">Google Colab</th></tr></thead><tbody><tr><td>Inicio</td><td>Requiere Python y paquetes locales</td><td>Se abre en el navegador</td></tr><tr><td>Archivos</td><td>Permanecen en la carpeta donde los guardas</td><td>Los archivos del entorno de ejecución son temporales</td></tr><tr><td>Ejecución</td><td>Usa los recursos de tu computador</td><td>Usa un entorno remoto con disponibilidad variable</td></tr><tr><td>Guardado</td><td>Guarda el <code>.ipynb</code> localmente</td><td>Guarda una copia en Drive o descarga el <code>.ipynb</code></td></tr><tr><td>Uso propuesto</td><td>Trabajo local y control del entorno</td><td>Comenzar con poca instalación</td></tr></tbody></table></div>
+<h3>Opción A · Colab paso a paso</h3>
+<p>El archivo de esta clase se llama <strong>Introduccion_Python_Analitica_Industrial.ipynb</strong>. Un <code>.ipynb</code> es un cuaderno que contiene explicaciones, código y espacios para resolver los ejercicios; no debes buscar un archivo desconocido ni crearlo desde cero.</p>
+<ol><li>Pulsa <a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb">Abrir el cuaderno de esta clase en Colab</a> e inicia sesión con Google si se solicita. Este enlace abre directamente el archivo de la clase.</li><li>Selecciona <strong>Archivo → Guardar una copia en Drive</strong> y trabaja en esa copia. Si prefieres subir el archivo manualmente, primero <a href="https://raw.githubusercontent.com/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb">descarga el cuaderno de la clase</a>. Luego abre Colab, usa <strong>Archivo → Subir notebook</strong> y selecciona <strong>Introduccion_Python_Analitica_Industrial.ipynb</strong> desde la carpeta donde lo descargaste, normalmente <strong>Descargas</strong>. Los nombres de menú pueden variar con el idioma.</li><li>Conecta el entorno y ejecuta la primera celda con <strong>Shift+Enter</strong>.</li><li>Prueba una celda de texto y otra de código. El botón <code>+ Código</code> agrega instrucciones; <code>+ Texto</code> agrega explicaciones.</li><li>Guarda una copia en Drive o descarga el notebook. Descargar el notebook no descarga automáticamente los CSV generados.</li><li>El caso industrial ya incluye los datos dentro del cuaderno: <strong>no necesitas subir un CSV para empezar</strong>. Para practicar además la lectura de archivos, descarga <strong>produccion.csv</strong> desde <strong>Materiales → Descargar datos CSV</strong> en la página de la clase y súbelo desde el panel de archivos de Colab. Después podrás leerlo con <code>pd.read_csv(&quot;produccion.csv&quot;)</code>. Vuelve a subirlo si el entorno se reinicia o desaparece.</li></ol>
+<h3>Qué vas a ejecutar</h3>
+<p>Los ocho retos y el programa industrial son ejercicios ejecutables en Python. Los ejemplos iniciales usan números definidos en sus celdas; el proyecto final trabaja con doce registros sintéticos de dos líneas durante seis días. Los datos son hipotéticos para aprender, pero los cálculos, las validaciones y los archivos que genera el programa son reales. La página web permite usar el laboratorio y la autoevaluación; el código Python se ejecuta en el cuaderno de Colab o Jupyter.</p>
+<h3>Opción B · Jupyter paso a paso</h3>
+<p>Con Python 3 instalado, abre una terminal en la carpeta de la clase. En Windows puedes usar <code>py</code> en lugar de <code>python</code> si ese es el lanzador disponible.</p>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>python -m venv .venv</code></pre></div>
+<p>Activa el entorno con <code>.venv\Scripts\Activate.ps1</code> en PowerShell o <code>source .venv/bin/activate</code> en macOS/Linux. Si PowerShell bloquea la activación, puedes usar directamente <code>.venv\Scripts\python.exe</code> en lugar de <code>python</code>, sin cambiar políticas del sistema.</p>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>python -m pip install jupyterlab numpy pandas matplotlib ipywidgets
+python -m jupyterlab</code></pre></div>
+<p>Descarga <strong>Introduccion_Python_Analitica_Industrial.ipynb</strong>, guárdalo en la carpeta de la clase y ábrelo desde el explorador de archivos de Jupyter. Si prefieres la interfaz clásica Jupyter Notebook, instala <code>notebook</code> y ejecuta <code>python -m notebook</code>.</p>
+<h3>Cómo trabajar sin perderte</h3>
+<ul><li>Ejecuta de arriba abajo; una celda puede necesitar variables de celdas anteriores.</li><li><code>[*]</code> indica ejecución; el número entre corchetes registra el orden de ejecución, no la posición de la celda.</li><li>Guarda con frecuencia. Reiniciar el kernel borra variables, pero no el texto guardado.</li><li>Antes de entregar: <strong>reinicia y ejecuta todas las celdas</strong>. Esto descubre dependencias ocultas.</li><li>Markdown admite <code># Título</code>, <code>**negrita**</code>, listas y tablas. El código usa sangría de cuatro espacios para delimitar bloques.</li></ul>
+<p><strong>Actividad:</strong> escribe tu nombre en una celda de texto, ejecuta un saludo, cambia el mensaje y reinicia el kernel. Explica qué desapareció y qué permaneció.</p>
+<p>Referencias de instalación: <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html">Jupyter</a> y <a href="https://research.google.com/colaboratory/faq.html">preguntas frecuentes de Colab</a>.</p><h3>Ejecución 01 · Comprobar que Python funciona</h3>
+<p><strong>Haz esto:</strong> Ejecuta la celda completa con el botón triangular de su izquierda o Shift+Enter.</p>
+<p><strong>Debes ver:</strong> Aparecen un saludo, la versión de Python y 95.0 % de calidad.</p>
+<p><strong>Comprende:</strong> Python ejecuta instrucciones. print muestra valores; 950 / 1000 * 100 transforma una razón en porcentaje.</p>
+<p><strong>Prueba y explica:</strong> Cambia solo el mensaje del saludo y vuelve a ejecutar.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>import sys
+print(&quot;¡Hola, equipo de analítica industrial!&quot;)
+print(&quot;Versión de Python:&quot;, sys.version.split()[0])
+print(&quot;Mi primer indicador:&quot;, 950 / 1000 * 100, &quot;% de calidad&quot;)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-1" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-2"><span class="badge">BLOQUE 02</span><h2>2. Variables, tipos y operadores</h2>
+<p>Una variable es un nombre asociado a un valor. <code>=</code> asigna; <code>==</code> compara. Usa nombres como <code>unidades_buenas</code>: indican qué mide el dato. Python distingue mayúsculas y minúsculas; no uses espacios ni empieces con un número. Los comentarios comienzan con <code>#</code>.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tipo</th><th scope="col">Ejemplo</th><th scope="col">Aplicación</th></tr></thead><tbody><tr><td><code>int</code></td><td><code>1000</code></td><td>Unidades enteras</td></tr><tr><td><code>float</code></td><td><code>7.5</code></td><td>Horas o mediciones decimales</td></tr><tr><td><code>str</code></td><td><code>&quot;Línea A&quot;</code></td><td>Texto entre comillas</td></tr><tr><td><code>bool</code></td><td><code>True</code>, <code>False</code></td><td>Cumple o no cumple</td></tr><tr><td><code>None</code></td><td><code>None</code></td><td>Ausencia de valor, diferente de cero</td></tr></tbody></table></div>
+<p>Operadores: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> (división), <code>//</code> (cociente entero), <code>%</code> (residuo), <code>**</code> (potencia). Usa paréntesis para hacer explícito el orden. Los decimales se escriben con punto en el código. Una tasa <code>0.95</code> corresponde a <code>95 %</code>; no multipliques dos veces por 100.</p><h3>Ejecución 02 · Guardar datos en variables</h3>
+<p><strong>Haz esto:</strong> Ejecuta sin cambiar los valores iniciales; identifica producidas, defectuosas y horas.</p>
+<p><strong>Debes ver:</strong> 950 unidades buenas, calidad 95.00 %, 39 cajas completas y 14 unidades restantes.</p>
+<p><strong>Comprende:</strong> Cada nombre representa un dato. Primero se calculan buenas; después se usan para calcular calidad y cajas.</p>
+<p><strong>Prueba y explica:</strong> Cambia defectuosas de 50 a 20 y predice las buenas antes de ejecutar.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>linea = &quot;A&quot;
+producidas = 1000
+defectuosas = 50
+horas = 7.5
+buenas = producidas - defectuosas
+calidad_pct = buenas / producidas * 100
+cumple = calidad_pct &gt;= 97
+print(type(producidas), type(horas), type(linea), type(cumple))
+print(f&quot;Línea {linea}: {buenas} unidades buenas; calidad {calidad_pct:.2f}%&quot;)
+print(&quot;Cajas completas de 24:&quot;, buenas // 24, &quot;Unidades restantes:&quot;, buenas % 24)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Conversión y entrada de datos</h3>
+<p><code>input()</code> devuelve texto, aunque escribas números. Convierte con <code>int()</code> para enteros o <code>float()</code> para decimales. <code>float(&quot;7,5&quot;)</code> produce un error: acuerda el separador decimal. En el notebook usamos datos ya definidos para que <strong>Ejecutar todo</strong> no se quede esperando una respuesta.</p>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>horas = float(input(&quot;Horas trabajadas (usa punto decimal): &quot;))</code></pre></div>
+<p>Los valores decimales pueden tener pequeñas aproximaciones binarias. Redondea para mostrar; conserva precisión durante los cálculos.</p><h3>Ejecución 03 · Convertir texto a números</h3>
+<p><strong>Haz esto:</strong> Compara las dos líneas que usan 100 y 20: una trabaja con texto y otra con enteros.</p>
+<p><strong>Debes ver:</strong> 8.0; 10020; 120; tasa de rechazo 5.0 % con los valores iniciales.</p>
+<p><strong>Comprende:</strong> Sumar textos concatena. int y float convierten valores. El porcentaje depende de las variables de la celda anterior.</p>
+<p><strong>Prueba y explica:</strong> Vuelve a los datos iniciales si quieres comparar con estas respuestas de referencia.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>texto_horas = &quot;7.5&quot;
+horas_convertidas = float(texto_horas)
+print(horas_convertidas + 0.5)
+print(&quot;100&quot; + &quot;20&quot;)  # concatenación: 10020
+print(int(&quot;100&quot;) + int(&quot;20&quot;))  # suma: 120
+print(f&quot;Tasa de rechazo: {defectuosas / producidas:.1%}&quot;)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 1 · Un turno en números</h3>
+<p>Un turno produce 840 unidades, 21 defectuosas, durante 7 horas con 3 operarios. Calcula buenas, calidad porcentual, unidades buenas/hora y unidades buenas/hora-persona. ¿Por qué los dos últimos resultados son diferentes?</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>buenas = 840 - 21
+print(buenas)  # 819
+print(buenas / 840 * 100)  # 97.5 %
+print(buenas / 7)  # 117 unidades buenas/hora
+print(buenas / (7 * 3))  # 39 unidades buenas/hora-persona</code></pre></div>
+</details><label class="complete"><input id="done-2" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-3"><span class="badge">BLOQUE 03</span><h2>3. Colecciones: organizar varios datos</h2>
+<p>Una <strong>lista</strong> almacena una secuencia modificable; una <strong>tupla</strong> agrupa elementos que no se reasignan individualmente; un <strong>diccionario</strong> relaciona claves con valores; un <strong>conjunto</strong> conserva elementos únicos.</p>
+<p>Los índices comienzan en cero. <code>lista[0]</code> es el primer elemento y <code>lista[-1]</code> el último. El corte <code>lista[1:3]</code> incluye las posiciones 1 y 2, pero excluye la 3. Modificar una lista afecta a otros nombres que apunten a la misma lista; usa <code>.copy()</code> si necesitas una copia independiente superficial.</p><h3>Ejecución 04 · Organizar varios registros</h3>
+<p><strong>Haz esto:</strong> Ejecuta y localiza el primer dato, el último, el corte y el valor agregado con append.</p>
+<p><strong>Debes ver:</strong> La lista tiene seis días y suma 5520 unidades; el diccionario tiene 970 buenas.</p>
+<p><strong>Comprende:</strong> Lista: secuencia de valores. Diccionario: registro con campos. Los índices comienzan en cero.</p>
+<p><strong>Prueba y explica:</strong> Agrega un séptimo valor a una copia de la lista y vuelve a sumar.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>produccion_diaria = [800, 920, 870, 1000, 950]
+print(produccion_diaria[0], produccion_diaria[-1], produccion_diaria[1:3])
+produccion_diaria.append(980)
+print(&quot;Días:&quot;, len(produccion_diaria), &quot;Total:&quot;, sum(produccion_diaria))
+turno = {&quot;linea&quot;: &quot;A&quot;, &quot;producidas&quot;: 1000, &quot;defectuosas&quot;: 30}
+turno[&quot;buenas&quot;] = turno[&quot;producidas&quot;] - turno[&quot;defectuosas&quot;]
+print(turno, turno.get(&quot;supervisor&quot;, &quot;Sin registrar&quot;))
+coordenada = (2, 3)
+lineas_unicas = set([&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;])
+print(sorted(lineas_unicas))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 2 · Registro de turno</h3>
+<p>Crea un diccionario con línea, horas, operarios y producción. Agrega la productividad bruta por hora-persona. Usa 600 unidades, 5 horas y 4 operarios.</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>registro = dict(linea=&quot;B&quot;, horas=5, operarios=4, producidas=600)
+registro[&quot;productividad_bruta&quot;] = registro[&quot;producidas&quot;] / (registro[&quot;horas&quot;] * registro[&quot;operarios&quot;])
+print(registro)  # 30 unidades/hora-persona</code></pre></div>
+</details><label class="complete"><input id="done-3" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-4"><span class="badge">BLOQUE 04</span><h2>4. Condicionales: convertir criterios en decisiones</h2>
+<p><code>if</code> pregunta si una condición es verdadera, <code>elif</code> prueba otra y <code>else</code> cubre el resto. Python ejecuta la primera rama que corresponde. La sangría determina qué instrucciones pertenecen a cada rama.</p>
+<p>Comparaciones: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>. Conecta condiciones con <code>and</code>, <code>or</code> y <code>not</code>. Para comprobar ausencia usa <code>valor is None</code>.</p>
+<p><strong>Regla didáctica de calidad:</strong> verde ≥ 98 %, amarillo ≥ 95 % y &lt; 98 %, rojo &lt; 95 %. Son umbrales de práctica, no estándares universales. En una empresa deben acordarse según producto y proceso.</p><h3>Ejecución 05 · Tomar decisiones con condiciones</h3>
+<p><strong>Haz esto:</strong> Identifica el bloque que corresponde a calidad = 96.5 y ejecuta.</p>
+<p><strong>Debes ver:</strong> Amarillo y el mensaje de datos aptos para calcular unidades/hora.</p>
+<p><strong>Comprende:</strong> Se ejecuta la primera condición verdadera. La sangría delimita cada rama.</p>
+<p><strong>Prueba y explica:</strong> Prueba exactamente 95 y 98 para revisar las fronteras del semáforo.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>calidad = 96.5
+if calidad &gt;= 98:
+    estado = &quot;Verde&quot;
+elif calidad &gt;= 95:
+    estado = &quot;Amarillo&quot;
+else:
+    estado = &quot;Rojo&quot;
+print(estado)
+
+horas = 8
+producidas = 1000
+if horas &gt; 0 and producidas &gt;= 0:
+    print(&quot;Datos aptos para calcular unidades/hora&quot;)
+else:
+    print(&quot;Revisar los datos antes de calcular&quot;)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 3 · Fronteras del semáforo</h3>
+<p>Prueba calidades de 94.9, 95, 97.9, 98 y 100. Después agrega una validación que rechace valores menores que 0 o mayores que 100.</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>calidad = 101
+if not 0 &lt;= calidad &lt;= 100:
+    print(&quot;Calidad inválida&quot;)
+elif calidad &gt;= 98:
+    print(&quot;Verde&quot;)
+elif calidad &gt;= 95:
+    print(&quot;Amarillo&quot;)
+else:
+    print(&quot;Rojo&quot;)</code></pre></div>
+</details><label class="complete"><input id="done-4" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-5"><span class="badge">BLOQUE 05</span><h2>5. Ciclos: repetir sin copiar instrucciones</h2>
+<p>Usa <code>for</code> para recorrer una colección o un rango. <code>range(1, 4)</code> genera 1, 2 y 3. <code>enumerate()</code> entrega posición y valor; <code>zip()</code> permite recorrer dos colecciones a la vez, pero se detiene en la más corta.</p>
+<p><code>while</code> repite mientras una condición sea verdadera: debe existir un cambio que permita terminar. <code>break</code> termina el ciclo; <code>continue</code> pasa a la siguiente iteración. Un <strong>acumulador</strong> suma valores; un <strong>contador</strong> cuenta ocurrencias. Una comprensión de listas abrevia transformaciones simples, sin reemplazar la claridad.</p><h3>Ejecución 06 · Repetir con ciclos</h3>
+<p><strong>Haz esto:</strong> Sigue el acumulado en cada vuelta del for y luego observa el while.</p>
+<p><strong>Debes ver:</strong> El acumulado final es 3590. Hay tres inspecciones. La lectura se detiene al encontrar -1.</p>
+<p><strong>Comprende:</strong> for recorre datos; while necesita una condición de salida. continue omite una vuelta y break termina.</p>
+<p><strong>Prueba y explica:</strong> Explica por qué el 30 situado después del -1 no se procesa.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>totales = [800, 920, 870, 1000]
+acumulado = 0
+for dia, unidades in enumerate(totales, start=1):
+    acumulado += unidades
+    print(f&quot;Día {dia}: {unidades}; acumulado: {acumulado}&quot;)
+
+intentos = 0
+while intentos &lt; 3:
+    intentos += 1
+    print(&quot;Inspección&quot;, intentos)
+
+for valor in [10, None, 20, -1, 30]:
+    if valor is None:
+        continue
+    if valor &lt; 0:
+        print(&quot;Se detuvo por valor inválido&quot;)
+        break
+    print(&quot;Válido:&quot;, valor)
+
+cumplimientos = [u / 900 * 100 for u in totales]
+print(cumplimientos)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 4 · Detector de turnos</h3>
+<p>Para [92, 98, 96, 99, 94], cuenta cuántos turnos tienen calidad menor que 95 %. Muestra sus posiciones contando desde 1.</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>alertas = 0
+for posicion, calidad in enumerate([92, 98, 96, 99, 94], start=1):
+    if calidad &lt; 95:
+        alertas += 1
+        print(&quot;Revisar turno&quot;, posicion)
+print(&quot;Alertas:&quot;, alertas)  # 2</code></pre></div>
+</details><label class="complete"><input id="done-5" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-6"><span class="badge">BLOQUE 06</span><h2>6. Funciones: reglas que se pueden reutilizar</h2>
+<p><code>def</code> define una función; los <strong>parámetros</strong> son los nombres de entrada y los <strong>argumentos</strong> son los valores que entregas. <code>return</code> devuelve un resultado; <code>print</code> solamente lo muestra. Una variable creada dentro de una función normalmente es local.</p>
+<p>Una buena función tiene un propósito, nombres claros, documentación breve y validación de sus entradas. Un argumento predeterminado evita repetir una opción habitual. Las anotaciones de tipo ayudan a leer, pero no validan automáticamente.</p><h3>Ejecución 07 · Reutilizar una función</h3>
+<p><strong>Haz esto:</strong> Ejecuta la definición y las dos llamadas al final de la celda.</p>
+<p><strong>Debes ver:</strong> Para 840, 21, 7 y 3: 819 buenas, 97.5 % de calidad, 117 buenas/hora y 39 buenas/hora-persona. Sin producción, calidad es None.</p>
+<p><strong>Comprende:</strong> Los argumentos entran, la validación revisa y return devuelve un diccionario de indicadores.</p>
+<p><strong>Prueba y explica:</strong> Explica la diferencia entre mostrar un valor y devolverlo.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>def calcular_indicadores(producidas, defectuosas, horas, operarios=1):
+    &quot;&quot;&quot;Calcula calidad y productividad de un turno con conteos enteros.&quot;&quot;&quot;
+    for nombre, valor in [(&quot;producidas&quot;, producidas), (&quot;defectuosas&quot;, defectuosas), (&quot;operarios&quot;, operarios)]:
+        if isinstance(valor, bool) or not isinstance(valor, int):
+            raise ValueError(f&quot;{nombre} debe ser entero&quot;)
+    if isinstance(horas, bool) or not isinstance(horas, (int, float)):
+        raise ValueError(&quot;horas debe ser numérico&quot;)
+    import math
+    if not math.isfinite(horas) or horas &lt;= 0 or operarios &lt;= 0:
+        raise ValueError(&quot;Horas y operarios deben ser positivos y finitos&quot;)
+    if producidas &lt; 0 or not 0 &lt;= defectuosas &lt;= producidas:
+        raise ValueError(&quot;Los conteos deben ser coherentes&quot;)
+    buenas = producidas - defectuosas
+    return {
+        &quot;buenas&quot;: buenas,
+        &quot;calidad_pct&quot;: buenas / producidas * 100 if producidas else None,
+        &quot;buenas_hora&quot;: buenas / horas,
+        &quot;buenas_hora_persona&quot;: buenas / (horas * operarios),
+    }
+
+resultado = calcular_indicadores(840, 21, 7, operarios=3)
+print(resultado)
+print(calcular_indicadores(0, 0, 8, 2))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Cero no es lo mismo que no definido</h3>
+<p>Si no se produjo ninguna unidad, la calidad <code>buenas/producidas</code> no está definida. No corresponde inventar 0 % o 100 %. Si hubo horas trabajadas y cero buenas, la productividad sí es cero. Esta diferencia cambia la interpretación de un reporte.</p><h3>🧩 Reto 5 · Función de cumplimiento</h3>
+<p>Define <code>cumplimiento(real, meta)</code> que devuelva porcentaje, rechace metas ≤ 0 y producción negativa. Prueba (900, 1000) y (1100, 1000). ¿Un resultado mayor que 100 siempre es un error?</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>def cumplimiento(real, meta):
+    if meta &lt;= 0 or real &lt; 0:
+        raise ValueError(&quot;Revisar real y meta&quot;)
+    return real / meta * 100
+print(cumplimiento(900, 1000))  # 90
+print(cumplimiento(1100, 1000))  # 110: puede superar la meta</code></pre></div>
+</details><label class="complete"><input id="done-6" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-7"><span class="badge">BLOQUE 07</span><h2>7. Errores, depuración y comprobaciones</h2>
+<div class="table-scroll"><table><thead><tr><th scope="col">Mensaje</th><th scope="col">Causa típica</th><th scope="col">Acción</th></tr></thead><tbody><tr><td><code>SyntaxError</code></td><td>Falta <code>:</code> o comilla</td><td>Revisa la línea indicada y la anterior</td></tr><tr><td><code>IndentationError</code></td><td>Sangría inconsistente</td><td>Alinea bloques con cuatro espacios</td></tr><tr><td><code>NameError</code></td><td>Variable inexistente</td><td>Revisa nombre y orden de ejecución</td></tr><tr><td><code>TypeError</code></td><td>Operación entre tipos incompatibles</td><td>Comprueba <code>type()</code> y convierte conscientemente</td></tr><tr><td><code>ValueError</code></td><td>Valor no convertible o no permitido</td><td>Valida y corrige la entrada</td></tr><tr><td><code>ZeroDivisionError</code></td><td>Denominador cero</td><td>Decide si corresponde rechazar o marcar ausente</td></tr><tr><td><code>KeyError</code></td><td>Clave o columna inexistente</td><td>Inspecciona nombres y espacios</td></tr><tr><td><code>FileNotFoundError</code></td><td>Ruta incorrecta</td><td>Revisa carpeta actual y archivo</td></tr><tr><td><code>ModuleNotFoundError</code></td><td>Librería ausente en el kernel</td><td>Instala en el entorno correcto</td></tr></tbody></table></div>
+<p>Lee la última línea del error y luego la ubicación. Reproduce con pocos datos. <code>try/except</code> permite responder a errores esperados; no uses un <code>except</code> vacío que oculte fallos. <code>assert</code> ayuda en ejercicios y pruebas; la validación del programa debe usar condiciones y excepciones.</p><h3>Ejecución 08 · Reconocer un error esperado</h3>
+<p><strong>Haz esto:</strong> Ejecuta el ejemplo completo, incluido try/except.</p>
+<p><strong>Debes ver:</strong> Se informa que la entrada fue rechazada y luego aparecen las comprobaciones superadas.</p>
+<p><strong>Comprende:</strong> El error es intencional: no puede haber 120 defectuosas entre 100 producidas. La celda lo captura para seguir.</p>
+<p><strong>Prueba y explica:</strong> Distingue ese mensaje controlado de un error rojo que interrumpe la ejecución.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>try:
+    calcular_indicadores(100, 120, 8)
+except ValueError as error:
+    print(&quot;Entrada rechazada:&quot;, error)
+
+assert calcular_indicadores(100, 5, 2, 2)[&quot;buenas&quot;] == 95
+assert calcular_indicadores(0, 0, 2)[&quot;calidad_pct&quot;] is None
+print(&quot;Comprobaciones superadas&quot;)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-7" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-8"><span class="badge">BLOQUE 08</span><h2>8. Librerías y reproducibilidad</h2>
+<p>Un <strong>módulo</strong> es código importable; un <strong>paquete</strong> organiza módulos. <code>import numpy as np</code> usa un alias convencional. Importar no instala: los paquetes deben existir en el entorno del kernel.</p>
+<ul><li>Biblioteca estándar: <code>math</code>, <code>pathlib</code>, <code>csv</code>; viene con Python.</li><li>NumPy: arreglos y cálculo numérico vectorizado.</li><li>pandas: tablas, tipos, filtros, agrupaciones y archivos.</li><li>Matplotlib: gráficos.</li><li>ipywidgets: controles interactivos, opcionales en esta clase.</li></ul>
+<p>Si hace falta, ejecuta <code>%pip install numpy pandas matplotlib ipywidgets</code> en una nueva celda y reinicia el kernel si el entorno lo pide. <code>%pip</code> es una instrucción del notebook, no Python estándar. Registra versiones y usa un entorno virtual para reproducir un trabajo.</p><h3>Ejecución 09 · Cargar las librerías</h3>
+<p><strong>Haz esto:</strong> Ejecuta antes de los ejemplos de NumPy y pandas.</p>
+<p><strong>Debes ver:</strong> Se muestran las versiones de NumPy y pandas y la carpeta de trabajo. Las versiones pueden variar.</p>
+<p><strong>Comprende:</strong> Importar pone las herramientas disponibles en este entorno. No carga todavía los datos de producción.</p>
+<p><strong>Prueba y explica:</strong> Si falta un paquete, ejecuta %pip install numpy pandas matplotlib ipywidgets en una celda aparte y vuelve aquí.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
+print(&quot;NumPy&quot;, np.__version__, &quot;pandas&quot;, pd.__version__)
+print(&quot;Carpeta actual:&quot;, Path.cwd())
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-8" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-9"><span class="badge">BLOQUE 09</span><h2>9. NumPy: pensar en arreglos</h2>
+<p>Una lista de Python es flexible; un arreglo NumPy suele almacenar elementos de un mismo tipo y realiza operaciones elemento a elemento. <code>lista * 2</code> repite una lista; <code>arreglo * 2</code> multiplica sus valores.</p>
+<p><code>shape</code> indica dimensiones, <code>ndim</code> cuántos ejes hay y <code>dtype</code> el tipo. En una matriz de días × líneas, <code>axis=0</code> resume sobre días y entrega un resultado por línea; <code>axis=1</code> resume sobre líneas y entrega un resultado por día.</p>
+<p>Una máscara booleana selecciona elementos. La <strong>vectorización</strong> expresa una operación sobre el arreglo entero. El <strong>broadcasting</strong> permite operaciones entre formas compatibles, como dividir cada columna por su meta. <code>np.nan</code> representa un dato numérico ausente; no es un cero.</p><h3>Ejecución 10 · Calcular con NumPy</h3>
+<p><strong>Haz esto:</strong> Ejecuta y compara lista * 2 con arreglo * 2.</p>
+<p><strong>Debes ver:</strong> La matriz tiene forma (3, 2); las sumas por línea son 2550 y 2850; las sumas por día son 1700, 1800 y 1900.</p>
+<p><strong>Comprende:</strong> Un arreglo opera elemento a elemento. El eje elegido determina qué dimensión se resume.</p>
+<p><strong>Prueba y explica:</strong> Explica por qué np.nan no debe reemplazarse automáticamente por cero.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>lista = [800, 900, 1000]
+arreglo = np.array(lista)
+print(&quot;Lista:&quot;, lista * 2, &quot;Arreglo:&quot;, arreglo * 2)
+matriz = np.array([[800, 900], [850, 950], [900, 1000]])
+print(&quot;Forma:&quot;, matriz.shape, &quot;Ejes:&quot;, matriz.ndim, &quot;Tipo:&quot;, matriz.dtype)
+print(&quot;Total por línea:&quot;, matriz.sum(axis=0))
+print(&quot;Total por día:&quot;, matriz.sum(axis=1))
+print(&quot;Cumplimiento por día y línea (%):&quot;, matriz / np.array([900, 1000]) * 100)
+print(&quot;Valores mayores que 900:&quot;, matriz[matriz &gt; 900])
+print(&quot;Media:&quot;, arreglo.mean(), &quot;Mediana:&quot;, np.median(arreglo))
+print(&quot;Desviación poblacional:&quot;, arreglo.std(ddof=0))
+print(&quot;Desviación muestral:&quot;, arreglo.std(ddof=1))
+mediciones = np.array([10.0, np.nan, 12.0])
+print(&quot;Media excluyendo ausente:&quot;, np.nanmean(mediciones))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><p>La media resume nivel; la desviación resume dispersión. <code>ddof=0</code> describe la población disponible; <code>ddof=1</code> se usa para la estimación muestral habitual. Excluir ausentes cambia la base analizada: informa cuántos faltan y no sustituyas automáticamente por la media.</p><h3>🧩 Reto 6 · Vectorizar calidad</h3>
+<p>Con producidas [100, 200, 0] y defectuosas [2, 10, 0], calcula calidad sin dividir por cero. El tercer resultado debe ser ausente.</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>p = np.array([100, 200, 0])
+d = np.array([2, 10, 0])
+q = np.divide(p-d, p, out=np.full(3, np.nan), where=p&gt;0) * 100
+print(q)  # [98., 95., nan]</code></pre></div>
+</details><label class="complete"><input id="done-9" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-10"><span class="badge">BLOQUE 10</span><h2>10. pandas: trabajar con tablas</h2>
+<p>Una <strong>Series</strong> es una columna con índice; un <strong>DataFrame</strong> es una tabla. El índice identifica filas, pero no sustituye necesariamente una clave de negocio. Inspecciona antes de calcular: <code>head()</code>, <code>shape</code>, <code>columns</code>, <code>dtypes</code>, <code>info()</code> y <code>describe()</code>.</p>
+<p><code>df[&quot;columna&quot;]</code> selecciona una serie; <code>df[[&quot;a&quot;, &quot;b&quot;]]</code> una tabla. <code>.loc</code> selecciona por etiquetas o condiciones; <code>.iloc</code> por posiciones. Usa <code>&amp;</code> para «y», <code>|</code> para «o» y paréntesis en cada condición vectorizada. Evita asignaciones encadenadas; usa <code>.loc</code> o <code>.copy()</code>.</p><h3>Ejecución 11 · Explorar una tabla con pandas</h3>
+<p><strong>Haz esto:</strong> Ejecuta; revisa la tabla, los tipos, el filtro y la agrupación.</p>
+<p><strong>Debes ver:</strong> La tabla original tiene tres filas. El filtro A y producidas ≥ 110 selecciona el registro de 120 unidades.</p>
+<p><strong>Comprende:</strong> Un DataFrame es una tabla. Filtrar selecciona registros y agrupar resume varios registros.</p>
+<p><strong>Prueba y explica:</strong> Busca las 215 buenas de A y las 141 buenas de B en el resumen.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>mini = pd.DataFrame({&quot;linea&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;A&quot;], &quot;producidas&quot;: [100, 150, 120], &quot;defectuosas&quot;: [2, 9, 3]})
+display(mini.head())
+print(mini.shape, mini.dtypes, sep=&quot;\n&quot;)
+mini.info()
+display(mini.describe())
+display(mini.loc[(mini[&quot;linea&quot;] == &quot;A&quot;) &amp; (mini[&quot;producidas&quot;] &gt;= 110), [&quot;linea&quot;, &quot;producidas&quot;]])
+display(mini.iloc[:2])
+mini[&quot;buenas&quot;] = mini[&quot;producidas&quot;] - mini[&quot;defectuosas&quot;]
+display(mini.sort_values(&quot;buenas&quot;, ascending=False))
+display(mini.groupby(&quot;linea&quot;, as_index=False)[[&quot;producidas&quot;, &quot;buenas&quot;]].sum())
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Archivos, faltantes y uniones</h3>
+<p>Lee CSV con <code>pd.read_csv(&quot;archivo.csv&quot;)</code>. Si usa <code>;</code> y coma decimal, especifica <code>sep=&quot;;&quot;, decimal=&quot;,&quot;</code>. Mira el archivo antes de escoger. Exporta con <code>index=False</code> para no agregar una columna de índices sin intención.</p>
+<p><code>isna()</code> detecta faltantes; <code>duplicated()</code> identifica repetidos; <code>pd.to_numeric(..., errors=&quot;coerce&quot;)</code> convierte texto inválido en ausente para detectarlo. <code>dropna()</code> descarta y <code>fillna()</code> imputa: ambas decisiones requieren justificación. No borres duplicados sin definir qué identifica un registro.</p>
+<p><code>merge</code> combina tablas por una clave. Una unión mal definida multiplica filas y puede inflar la producción. Usa <code>validate</code> para verificar la relación esperada. <code>pivot_table</code> reorganiza datos para comparar grupos.</p><h3>Ejecución 12 · Guardar, leer y unir tablas</h3>
+<p><strong>Haz esto:</strong> Ejecuta y comprueba que aparezca mini_produccion.csv en el panel de archivos.</p>
+<p><strong>Debes ver:</strong> Se agregan los productos Envase/Tapa, se conserva la cantidad de filas y se muestra el resumen por línea.</p>
+<p><strong>Comprende:</strong> El archivo guarda una tabla. merge usa una clave y validate evita una relación inesperada.</p>
+<p><strong>Prueba y explica:</strong> Explica qué podría pasar si el catálogo repitiera una misma línea.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>catalogo = pd.DataFrame({&quot;linea&quot;: [&quot;A&quot;, &quot;B&quot;], &quot;producto&quot;: [&quot;Envase&quot;, &quot;Tapa&quot;]})
+enriquecida = mini.merge(catalogo, on=&quot;linea&quot;, how=&quot;left&quot;, validate=&quot;many_to_one&quot;)
+display(enriquecida)
+mini.to_csv(&quot;mini_produccion.csv&quot;, index=False)
+recuperada = pd.read_csv(&quot;mini_produccion.csv&quot;)
+assert len(recuperada) == len(mini)
+display(mini.pivot_table(index=&quot;linea&quot;, values=&quot;buenas&quot;, aggfunc=&quot;sum&quot;))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 7 · Filtrar y agrupar</h3>
+<p>En mini, muestra registros con más de 110 unidades y calcula el total de defectuosas por línea. ¿Qué diferencia existe entre el número de filas y el total producido?</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>display(mini.loc[mini[&quot;producidas&quot;] &gt; 110])
+display(mini.groupby(&quot;linea&quot;)[&quot;defectuosas&quot;].sum())
+print(len(mini), mini[&quot;producidas&quot;].sum())  # 3 registros; 370 unidades</code></pre></div>
+</details><label class="complete"><input id="done-10" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-11"><span class="badge">BLOQUE 11</span><h2>11. Proyecto industrial: la planta de envases</h2>
+<p>Dos líneas fabrican el <strong>mismo producto comparable</strong> durante seis días. La jefatura necesita saber cuál cumple su meta, cuál pierde más unidades por calidad y dónde conviene investigar. Todos los datos son sintéticos.</p>
+<h3>Diccionario y supuestos</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Campo</th><th scope="col">Significado</th><th scope="col">Regla</th></tr></thead><tbody><tr><td>fecha</td><td>Día del registro</td><td>Fecha válida</td></tr><tr><td>linea</td><td>A o B</td><td>Junto a fecha forma la clave única</td></tr><tr><td>producidas</td><td>Unidades totales fabricadas</td><td>Entero ≥ 0</td></tr><tr><td>defectuosas</td><td>Unidades no conformes distintas</td><td>Entero entre 0 y producidas</td></tr><tr><td>horas</td><td>Horas de trabajo del turno</td><td>Positivo; incluye paradas dentro del turno</td></tr><tr><td>operarios</td><td>Personas durante todo el turno</td><td>Entero positivo</td></tr><tr><td>meta</td><td>Unidades totales planeadas</td><td>Entero positivo</td></tr></tbody></table></div>
+<p>Una unidad defectuosa se cuenta una vez aunque tenga varios defectos. No hay reproceso en este ejemplo. <code>horas × operarios</code> supone que todos trabajan las mismas horas; si no, suma las horas individuales. La productividad laboral usa unidades buenas/hora-persona. No es OEE: para OEE necesitaríamos disponibilidad, tiempo operativo y velocidad ideal claramente definidos.</p>
+<p>Los datos están incluidos en el notebook para ejecutarlo sin descargar archivos adicionales. El CSV que se escribe aquí contiene los mismos registros que el archivo entregado.</p><h3>Ejecución 13 · Elegir y cargar los datos industriales</h3>
+<p><strong>Haz esto:</strong> Para la primera práctica deja USAR_ARCHIVO_PROPIO = False y ejecuta. No subas archivos todavía.</p>
+<p><strong>Debes ver:</strong> Con los datos incluidos aparecen doce registros, dos líneas y siete columnas originales. Se informa el origen de los datos.</p>
+<p><strong>Comprende:</strong> Esta es la única celda de entrada del caso: raw contiene los registros que luego se validarán.</p>
+<p><strong>Prueba y explica:</strong> Para practicar la carga manual, sigue la explicación de archivo propio debajo; después vuelve a ejecutar desde aquí.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>from io import StringIO
+CSV_DATOS = &#x27;fecha,linea,producidas,defectuosas,horas,operarios,meta\n2026-09-01,A,1000,20,8,4,1000\n2026-09-01,B,900,45,8,3,950\n2026-09-02,A,1100,22,8,4,1000\n2026-09-02,B,950,19,8,3,950\n2026-09-03,A,980,49,8,4,1000\n2026-09-03,B,1000,20,8,3,950\n2026-09-04,A,1050,21,8,4,1000\n2026-09-04,B,920,46,8,3,950\n2026-09-05,A,1080,54,8,4,1000\n2026-09-05,B,980,49,8,3,950\n2026-09-06,A,1020,20,8,4,1000\n2026-09-06,B,960,24,8,3,950\n&#x27;
+USAR_ARCHIVO_PROPIO = False
+ARCHIVO_PROPIO = &quot;produccion_usuario.csv&quot;
+
+if USAR_ARCHIVO_PROPIO:
+    archivo = Path(ARCHIVO_PROPIO)
+    if not archivo.is_file():
+        raise FileNotFoundError(f&quot;Sube {ARCHIVO_PROPIO} al panel de archivos antes de continuar&quot;)
+    raw = pd.read_csv(archivo)
+    print(&quot;Origen: archivo subido por ti →&quot;, ARCHIVO_PROPIO)
+else:
+    raw = pd.read_csv(StringIO(CSV_DATOS))
+    print(&quot;Origen: datos sintéticos incluidos en el cuaderno&quot;)
+
+print(&quot;Filas:&quot;, len(raw), &quot;Columnas:&quot;, len(raw.columns))
+display(raw)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Práctica opcional: cargar el CSV desde tu computador</h3>
+<ol><li>En la página de la clase abre <strong>Materiales → Descargar datos CSV</strong>. El archivo se llama <strong>produccion.csv</strong>.</li><li>En tu computador, crea una copia con el nombre <strong>produccion_usuario.csv</strong>. Conserva la extensión <code>.csv</code> una sola vez.</li><li>En Colab, abre el panel de <strong>Archivos</strong> (icono de carpeta a la izquierda), pulsa <strong>Subir</strong> y selecciona esa copia desde Descargas o la carpeta donde la guardaste.</li><li>Espera a que <strong>produccion_usuario.csv</strong> aparezca en la lista. Esto carga datos, no un notebook.</li><li>En la celda anterior cambia solo <strong>USAR_ARCHIVO_PROPIO = False</strong> por <strong>USAR_ARCHIVO_PROPIO = True</strong> y vuelve a ejecutarla.</li><li>Debe mostrarse «Origen: archivo subido por ti». Con la copia sin modificar seguirás viendo doce filas y siete columnas.</li><li>Continúa con la validación y vuelve a ejecutar todos los pasos del caso hasta exportar. Si cambias datos, no reutilices resultados anteriores.</li></ol>
+<p>El código no sobrescribe el archivo que subes. Si reinicias o pierdes el entorno de Colab, puede ser necesario subirlo de nuevo. Si necesitas trabajar sin subir archivos, vuelve a poner <code>False</code>.</p>
+<p>Para un archivo distinto respeta las columnas <code>fecha,linea,producidas,defectuosas,horas,operarios,meta</code>, fechas como <code>2026-09-01</code>, separador coma y punto decimal. El catálogo del ejercicio admite A y B. No agregues dos registros de la misma fecha y línea. Si tu CSV usa punto y coma, adapta la lectura a <code>pd.read_csv(archivo, sep=&quot;;&quot;, decimal=&quot;,&quot;)</code> y verifica los tipos antes de continuar.</p><label class="complete"><input id="done-11" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-12"><span class="badge">BLOQUE 12</span><h2>12. Validar antes de analizar</h2>
+<p>El programa rechaza registros inconsistentes: no corrige datos por adivinación. Para el caso completo no se permiten faltantes. En otro proyecto podrías separar registros rechazados, informar su proporción y pedir corrección a la fuente.</p>
+<p><strong>Taller de detectives:</strong> crea una copia de <code>raw</code>, cambia horas a cero, defectuosas a 2000 o línea a <code>C</code>, e intenta validarla. Luego duplica una fila. Explica cada mensaje. No modifiques la tabla original para continuar la clase.</p><h3>Ejecución 14 · Validar el archivo</h3>
+<p><strong>Haz esto:</strong> Ejecuta la definición de validar_datos y su llamada con raw.</p>
+<p><strong>Debes ver:</strong> Con el conjunto incluido: Registros válidos: 12.</p>
+<p><strong>Comprende:</strong> Se verifican columnas, fechas, faltantes, enteros, rangos y clave fecha-línea. No se inventan correcciones.</p>
+<p><strong>Prueba y explica:</strong> Si tu archivo falla, corrígelo en la fuente, vuelve a cargarlo y repite este paso.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>def validar_datos(tabla):
+    requeridas = [&quot;fecha&quot;, &quot;linea&quot;, &quot;producidas&quot;, &quot;defectuosas&quot;, &quot;horas&quot;, &quot;operarios&quot;, &quot;meta&quot;]
+    faltantes = set(requeridas) - set(tabla.columns)
+    if faltantes:
+        raise ValueError(f&quot;Faltan columnas: {sorted(faltantes)}&quot;)
+    if tabla.empty:
+        raise ValueError(&quot;No hay registros&quot;)
+    datos = tabla[requeridas].copy()
+    datos[&quot;fecha&quot;] = pd.to_datetime(datos[&quot;fecha&quot;], errors=&quot;coerce&quot;)
+    datos[&quot;linea&quot;] = datos[&quot;linea&quot;].astype(&quot;string&quot;).str.strip().str.upper()
+    numericas = [&quot;producidas&quot;, &quot;defectuosas&quot;, &quot;horas&quot;, &quot;operarios&quot;, &quot;meta&quot;]
+    for columna in numericas:
+        datos[columna] = pd.to_numeric(datos[columna], errors=&quot;coerce&quot;)
+    if datos.isna().any().any():
+        raise ValueError(&quot;Hay ausentes, fechas inválidas o números no convertibles&quot;)
+    if not np.isfinite(datos[numericas].to_numpy(dtype=float)).all():
+        raise ValueError(&quot;Hay números infinitos&quot;)
+    if not datos[&quot;linea&quot;].isin([&quot;A&quot;, &quot;B&quot;]).all():
+        raise ValueError(&quot;Línea fuera del catálogo A/B&quot;)
+    if datos.duplicated([&quot;fecha&quot;, &quot;linea&quot;]).any():
+        raise ValueError(&quot;Clave fecha-línea duplicada&quot;)
+    enteras = [&quot;producidas&quot;, &quot;defectuosas&quot;, &quot;operarios&quot;, &quot;meta&quot;]
+    if ((datos[enteras] % 1) != 0).any().any():
+        raise ValueError(&quot;Los conteos deben ser enteros&quot;)
+    if (datos[[&quot;producidas&quot;, &quot;defectuosas&quot;]] &lt; 0).any().any():
+        raise ValueError(&quot;Conteos negativos&quot;)
+    if (datos[&quot;defectuosas&quot;] &gt; datos[&quot;producidas&quot;]).any():
+        raise ValueError(&quot;Defectuosas supera producidas&quot;)
+    if (datos[[&quot;horas&quot;, &quot;operarios&quot;, &quot;meta&quot;]] &lt;= 0).any().any():
+        raise ValueError(&quot;Horas, operarios y meta deben ser positivos&quot;)
+    return datos
+
+df = validar_datos(raw)
+print(&quot;Registros válidos:&quot;, len(df))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Ejecución 15 · Probar una entrada incorrecta</h3>
+<p><strong>Haz esto:</strong> Ejecuta la celda que crea prueba = raw.copy().</p>
+<p><strong>Debes ver:</strong> Error detectado correctamente: Horas, operarios y meta deben ser positivos.</p>
+<p><strong>Comprende:</strong> Se cambia una copia, no la tabla original. El error se provoca para demostrar la validación.</p>
+<p><strong>Prueba y explica:</strong> No copies ese cero a tus datos válidos.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>prueba = raw.copy()
+prueba.loc[0, &quot;horas&quot;] = 0
+try:
+    validar_datos(prueba)
+except ValueError as error:
+    print(&quot;Error detectado correctamente:&quot;, error)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-12" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-13"><span class="badge">BLOQUE 13</span><h2>13. Indicadores: fórmulas, unidades y significado</h2>
+<div class="table-scroll"><table><thead><tr><th scope="col">Indicador</th><th scope="col">Fórmula</th><th scope="col">Interpretación</th></tr></thead><tbody><tr><td>Buenas</td><td>producidas − defectuosas</td><td>Unidades conformes</td></tr><tr><td>Calidad</td><td>buenas / producidas × 100</td><td>Porcentaje de unidades conformes</td></tr><tr><td>Rechazo</td><td>defectuosas / producidas × 100</td><td>Porcentaje de unidades no conformes</td></tr><tr><td>Cumplimiento</td><td>producidas / meta × 100</td><td>Cumplimiento de meta bruta</td></tr><tr><td>Tasa de producción</td><td>producidas / horas</td><td>Unidades totales por hora de línea</td></tr><tr><td>Tasa de buenas</td><td>buenas / horas</td><td>Unidades conformes por hora de línea</td></tr><tr><td>Productividad laboral</td><td>buenas / horas-persona</td><td>Unidades conformes por hora-persona</td></tr></tbody></table></div>
+<p>Calidad y rechazo deben sumar 100 % cuando hay producción. Cumplimiento puede superar 100 %. No confundas una meta de unidades totales con una meta de unidades buenas.</p>
+<h3>Regla crucial: razón de sumas</h3>
+<p>La calidad global es <code>suma(buenas)/suma(producidas)</code>, no el promedio simple de porcentajes. Ejemplo: un turno con 9 buenas de 10 y otro con 100 buenas de 100 da 99.09 % global, no 95 %. Los tamaños de los turnos son distintos.</p><h3>Ejecución 16 · Calcular indicadores por registro y línea</h3>
+<p><strong>Haz esto:</strong> Ejecuta después de validar. Lee las columnas buenas, calidad_pct y productividad_laboral.</p>
+<p><strong>Debes ver:</strong> Con los datos incluidos: A = 6044 buenas y B = 5507 buenas. Sus productividades son aproximadamente 31.48 y 38.24 buenas/hora-persona.</p>
+<p><strong>Comprende:</strong> Los porcentajes agrupados se calculan dividiendo sumas, no promediando porcentajes sin ponderación.</p>
+<p><strong>Prueba y explica:</strong> Señala el denominador de calidad y el de productividad; explica por qué son distintos.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>def agregar_indicadores(datos):
+    tabla = datos.copy()
+    tabla[&quot;buenas&quot;] = tabla[&quot;producidas&quot;] - tabla[&quot;defectuosas&quot;]
+    tabla[&quot;horas_persona&quot;] = tabla[&quot;horas&quot;] * tabla[&quot;operarios&quot;]
+    denominador = tabla[&quot;producidas&quot;].replace(0, np.nan)
+    tabla[&quot;calidad_pct&quot;] = tabla[&quot;buenas&quot;] / denominador * 100
+    tabla[&quot;rechazo_pct&quot;] = tabla[&quot;defectuosas&quot;] / denominador * 100
+    tabla[&quot;cumplimiento_pct&quot;] = tabla[&quot;producidas&quot;] / tabla[&quot;meta&quot;] * 100
+    tabla[&quot;producidas_hora&quot;] = tabla[&quot;producidas&quot;] / tabla[&quot;horas&quot;]
+    tabla[&quot;buenas_hora&quot;] = tabla[&quot;buenas&quot;] / tabla[&quot;horas&quot;]
+    tabla[&quot;productividad_laboral&quot;] = tabla[&quot;buenas&quot;] / tabla[&quot;horas_persona&quot;]
+    tabla[&quot;estado_calidad&quot;] = np.select(
+        [tabla[&quot;calidad_pct&quot;].isna(), tabla[&quot;calidad_pct&quot;] &gt;= 98, tabla[&quot;calidad_pct&quot;] &gt;= 95],
+        [&quot;Sin producción&quot;, &quot;Verde&quot;, &quot;Amarillo&quot;], default=&quot;Rojo&quot;)
+    return tabla
+
+def resumir(tabla, grupos):
+    columnas = [&quot;producidas&quot;, &quot;defectuosas&quot;, &quot;buenas&quot;, &quot;horas&quot;, &quot;horas_persona&quot;, &quot;meta&quot;]
+    resumen = tabla.groupby(grupos, as_index=False)[columnas].sum()
+    resumen[&quot;calidad_pct&quot;] = resumen[&quot;buenas&quot;] / resumen[&quot;producidas&quot;].replace(0, np.nan) * 100
+    resumen[&quot;cumplimiento_pct&quot;] = resumen[&quot;producidas&quot;] / resumen[&quot;meta&quot;] * 100
+    resumen[&quot;productividad_laboral&quot;] = resumen[&quot;buenas&quot;] / resumen[&quot;horas_persona&quot;]
+    return resumen
+
+df = agregar_indicadores(df)
+por_linea = resumir(df, &quot;linea&quot;)
+display(df.round(2))
+display(por_linea.round(2))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><p><strong>Interpretación de las horas:</strong> al sumar horas de dos líneas simultáneas obtienes horas-línea, no el tiempo de reloj transcurrido en la planta. En cambio, sumar horas-persona representa el esfuerzo laboral total del caso. Escribe siempre la unidad completa.</p><h3>Ejecución 17 · Construir el resumen global</h3>
+<p><strong>Haz esto:</strong> Ejecuta y contrasta con los totales de referencia.</p>
+<p><strong>Debes ver:</strong> 11940 producidas, 11551 buenas, calidad global 96.74 % y productividad global 34.38 buenas/hora-persona.</p>
+<p><strong>Comprende:</strong> El resumen global usa todas las unidades y todas las horas-persona del conjunto válido.</p>
+<p><strong>Prueba y explica:</strong> Si agregaste datos propios, tus resultados serán distintos: verifica con las fórmulas, no con estos totales fijos.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>total_producidas = df[&quot;producidas&quot;].sum()
+total_buenas = df[&quot;buenas&quot;].sum()
+calidad_global = total_buenas / total_producidas * 100
+productividad_global = total_buenas / df[&quot;horas_persona&quot;].sum()
+print(f&quot;Producción: {total_producidas:,} unidades&quot;)
+print(f&quot;Buenas: {total_buenas:,} unidades&quot;)
+print(f&quot;Calidad global: {calidad_global:.2f}%&quot;)
+print(f&quot;Productividad laboral: {productividad_global:.2f} unidades buenas/hora-persona&quot;)
+print(&quot;Ejemplo razón de sumas:&quot;, (9+100)/(10+100)*100)
+display(df.loc[df[&quot;calidad_pct&quot;] &lt; 98, [&quot;fecha&quot;, &quot;linea&quot;, &quot;calidad_pct&quot;, &quot;defectuosas&quot;]])
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>🧩 Reto 8 · Pregunta de gerencia</h3>
+<p>¿Qué línea tiene mayor producción total? ¿Cuál tiene mayor productividad laboral? ¿Cuál tiene mayor calidad? Explica por qué no necesariamente gana la misma línea.</p>
+<p>Antes de ejecutar, escribe tu predicción. Después modifica un dato y explica el cambio.</p><p class="box green">✍️ Resuelve este reto en tu copia del notebook de Colab. Luego abre la solución para comparar.</p><details><summary>Ver una solución después de intentarlo</summary>
+<div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>for indicador in [&quot;producidas&quot;, &quot;productividad_laboral&quot;, &quot;calidad_pct&quot;]:
+    fila = por_linea.loc[por_linea[indicador].idxmax()]
+    print(indicador, fila[&quot;linea&quot;], round(fila[indicador], 2))
+# A: producción y calidad. B: productividad laboral.
+# Los denominadores y las dotaciones son diferentes; esto no demuestra causalidad.</code></pre></div>
+</details><label class="complete"><input id="done-13" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-14"><span class="badge">BLOQUE 14</span><h2>14. Visualizar para responder preguntas</h2>
+<p>Usa barras para comparar categorías y líneas para observar evolución temporal. Incluye títulos, unidades y umbrales cuando aporten contexto. Evita gráficos 3D y no recortes ejes sin explicarlo. Un porcentaje alto puede ocultar muchas unidades defectuosas si el volumen es grande.</p>
+<p><strong>Antes de ejecutar:</strong> dibuja a mano cuál crees que será la barra más alta de producción y la de productividad. Después contrasta con los gráficos.</p><h3>Ejecución 18 · Graficar los resultados</h3>
+<p><strong>Haz esto:</strong> Ejecuta y observa las tres gráficas debajo de la celda.</p>
+<p><strong>Debes ver:</strong> A lidera producción; B lidera productividad laboral. Se genera indicadores.png.</p>
+<p><strong>Comprende:</strong> Un gráfico responde una pregunta concreta y debe mostrar unidades. Una barra mayor no significa mejor desempeño en todo.</p>
+<p><strong>Prueba y explica:</strong> Redacta una frase con cifra y unidad para cada una de las primeras dos gráficas.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+axes[0].bar(por_linea[&quot;linea&quot;], por_linea[&quot;producidas&quot;], color=&quot;#2563eb&quot;)
+axes[0].set(title=&quot;Producción total&quot;, ylabel=&quot;Unidades&quot;, xlabel=&quot;Línea&quot;)
+axes[1].bar(por_linea[&quot;linea&quot;], por_linea[&quot;productividad_laboral&quot;], color=&quot;#059669&quot;)
+axes[1].set(title=&quot;Productividad laboral&quot;, ylabel=&quot;Buenas / hora-persona&quot;, xlabel=&quot;Línea&quot;)
+for linea, grupo in df.groupby(&quot;linea&quot;):
+    axes[2].plot(grupo[&quot;fecha&quot;], grupo[&quot;calidad_pct&quot;], marker=&quot;o&quot;, label=linea)
+axes[2].axhline(98, color=&quot;gray&quot;, linestyle=&quot;--&quot;, label=&quot;Meta didáctica 98 %&quot;)
+axes[2].set(title=&quot;Calidad diaria (eje 0–100)&quot;, ylabel=&quot;Calidad (%)&quot;, ylim=(0, 100))
+axes[2].tick_params(axis=&quot;x&quot;, rotation=45)
+axes[2].legend()
+fig.tight_layout()
+fig.savefig(&quot;indicadores.png&quot;, dpi=150, bbox_inches=&quot;tight&quot;)
+plt.show()
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-14" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-15"><span class="badge">BLOQUE 15</span><h2>15. Laboratorio interactivo: ¿qué cambia si…?</h2>
+<p>Modifica producción, tasa de rechazo, horas y operarios. <strong>Predice primero</strong>. La simulación convierte la tasa solicitada en un conteo entero redondeado de defectuosas; por eso la calidad observada puede diferir ligeramente de la tasa ingresada.</p>
+<ol><li>Mantén 1000 unidades y reduce el rechazo de 5 % a 2 %. ¿Cuántas buenas recuperas?</li><li>Mantén todo lo demás y pasa de 4 a 3 operarios. El indicador sube matemáticamente. ¿Qué evidencia falta para afirmar que la operación puede sostenerlo?</li><li>Mantén las unidades y aumenta las horas. ¿Qué indicador disminuye?</li><li>Pon producción en cero. ¿Por qué la calidad no está definida?</li></ol>
+<p>Este es un modelo aritmético, no una predicción causal. Cambiar personal podría afectar velocidad, seguridad o calidad; el modelo no incluye esos efectos.</p><h3>Ejecución 19 · Experimentar con un escenario</h3>
+<p><strong>Haz esto:</strong> Ejecuta. Si aparecen controles, modifícalos; si no, usa una nueva celda con simular(1000, 2.0, 8.0, 4).</p>
+<p><strong>Debes ver:</strong> El escenario inicial produce 950 buenas, 95 % de calidad y aproximadamente 29.69 buenas/hora-persona. Con 2 % de rechazo: 980, 98 % y 30.63.</p>
+<p><strong>Comprende:</strong> El simulador es una comparación aritmética de supuestos, no una predicción causal del proceso.</p>
+<p><strong>Prueba y explica:</strong> Conserva la producción y baja el rechazo. Explica qué indicador cambia y por qué.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>def simular(producidas=1000, rechazo_pct=5.0, horas=8.0, operarios=4):
+    defectuosas = round(producidas * rechazo_pct / 100)
+    r = calcular_indicadores(producidas, defectuosas, horas, operarios)
+    calidad = &quot;No definida&quot; if r[&quot;calidad_pct&quot;] is None else f&quot;{r[&#x27;calidad_pct&#x27;]:.2f}%&quot;
+    print(f&quot;Buenas: {r[&#x27;buenas&#x27;]} | Calidad: {calidad}&quot;)
+    print(f&quot;Productividad: {r[&#x27;buenas_hora_persona&#x27;]:.2f} buenas/hora-persona&quot;)
+
+try:
+    import ipywidgets as widgets
+except ImportError:
+    print(&quot;Sin widgets: modifica los argumentos de simular() y vuelve a ejecutar.&quot;)
+    simular()
+else:
+    widgets.interact(simular,
+        producidas=widgets.IntSlider(value=1000, min=0, max=2000, step=50),
+        rechazo_pct=widgets.FloatSlider(value=5, min=0, max=20, step=0.5),
+        horas=widgets.FloatSlider(value=8, min=1, max=12, step=0.5),
+        operarios=widgets.IntSlider(value=4, min=1, max=10))
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><label class="complete"><input id="done-15" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-16"><span class="badge">BLOQUE 16</span><h2>16. Exportar resultados y comunicar una decisión</h2>
+<p>El archivo de detalle permite auditar registros y el resumen responde preguntas gerenciales. Exportar conserva datos, pero también necesitas documentar fórmulas, filtros y supuestos. En Colab descarga los archivos desde el panel de archivos; son temporales dentro del entorno.</p><h3>Ejecución 20 · Exportar y entregar el análisis</h3>
+<p><strong>Haz esto:</strong> Ejecuta al terminar los cálculos. Abre el panel de archivos de Colab y actualiza su lista si hace falta.</p>
+<p><strong>Debes ver:</strong> Aparecen detalle_indicadores.csv, resumen_por_linea.csv e indicadores.png.</p>
+<p><strong>Comprende:</strong> Guardar archivos en el entorno temporal no los descarga al computador. Cada archivo debe descargarse antes de cerrar la sesión.</p>
+<p><strong>Prueba y explica:</strong> Descarga esos tres archivos y tu copia del notebook; agrega una conclusión con dos cifras, una limitación y una recomendación.</p><div class="code-label">EJEMPLO PARA EJECUTAR EN PYTHON</div><div class="code-wrap"><button class="copy" type="button">Copiar</button><pre><code>df.to_csv(&quot;detalle_indicadores.csv&quot;, index=False, encoding=&quot;utf-8-sig&quot;)
+por_linea.to_csv(&quot;resumen_por_linea.csv&quot;, index=False, encoding=&quot;utf-8-sig&quot;)
+print(&quot;Guardados: detalle_indicadores.csv, resumen_por_linea.csv e indicadores.png&quot;)
+</code></pre></div><p class="code-link"><a href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Practicar este ejemplo en el notebook ↗</a></p><h3>Modelo de conclusión fundamentada</h3>
+<p>La línea A produjo más unidades y tuvo mayor calidad global; la línea B obtuvo mayor productividad laboral en estos datos. Recomendamos investigar los turnos de menor calidad de cada línea y comprobar producto, condiciones, horas reales y registro de defectos antes de atribuir causas. Una dotación menor no demuestra que reducir personal aumente la productividad real.</p>
+<p><strong>Actividad de 5 minutos:</strong> escribe cuatro frases: hallazgo con cifra y unidad, comparación, limitación y acción verificable. Evita «la línea B es mejor» sin nombrar el indicador.</p><label class="complete"><input id="done-16" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-17"><span class="badge">BLOQUE 17</span><h2>17. Reto integrador · comité de producción</h2>
+<p>En equipos de tres: analista, responsable de operaciones y auditor. Cambien de rol a mitad del trabajo.</p>
+<ol><li>Ejecuten el notebook desde un kernel limpio.</li><li>Agreguen un séptimo día para cada línea con datos coherentes y expliquen su elección.</li><li>Verifiquen claves, faltantes, rangos y unidades.</li><li>Calculen indicadores diarios, por línea y globales mediante razones de sumas.</li><li>Identifiquen dos registros prioritarios y expliquen el criterio.</li><li>Comparen un escenario con menor rechazo sin alterar los datos originales.</li><li>Presenten un gráfico, dos hallazgos, una limitación y una recomendación.</li><li>Entreguen notebook ejecutado, CSV de detalle, CSV resumen y conclusión de 150–200 palabras.</li></ol>
+<p><strong>Extensión:</strong> incorporen costo por unidad defectuosa con un supuesto explícito. Calculen pérdida estimada y separen lo medido de lo supuesto. No presenten esa estimación como costo contable real.</p>
+<h3>Rúbrica (100 puntos)</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Criterio</th><th scope="col">Puntos</th><th scope="col">Evidencia de logro</th></tr></thead><tbody><tr><td>Entorno y reproducibilidad</td><td>10</td><td>Ejecuta de arriba abajo sin dependencias ocultas</td></tr><tr><td>Fundamentos</td><td>20</td><td>Variables, condiciones, ciclo y función aplicados y explicados</td></tr><tr><td>Validación</td><td>20</td><td>Detecta inválidos y justifica el tratamiento</td></tr><tr><td>Indicadores</td><td>25</td><td>Fórmulas, unidades y agregaciones correctas</td></tr><tr><td>Gráfico y análisis</td><td>15</td><td>Gráfico legible, cifras coherentes, limitaciones</td></tr><tr><td>Comunicación y colaboración</td><td>10</td><td>Recomendación sustentada y roles documentados</td></tr></tbody></table></div>
+<p>Para cada criterio: evidencia completa y correcta = 100 % de sus puntos; parcial con errores menores = 60 %; intento con errores sustantivos = 30 %; sin evidencia = 0 %. La prioridad es explicar, no memorizar sintaxis.</p><label class="complete"><input id="done-17" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card lesson" id="tema-18"><span class="badge">BLOQUE 18</span><h2>18. Autoevaluación y cierre</h2>
+<p>Responde antes de abrir las soluciones.</p>
+<ol><li>¿Qué diferencia hay entre <code>=</code> y <code>==</code>?</li><li>¿Qué tipo devuelve <code>input()</code>?</li><li>¿Qué elementos produce <code>range(2, 5)</code>?</li><li>¿En qué se diferencian <code>print</code> y <code>return</code>?</li><li>¿Qué hace <code>np.array([1, 2]) * 2</code>?</li><li>¿Cómo filtras una tabla con dos condiciones?</li><li>¿Por qué no promediar directamente porcentajes de calidad?</li><li>¿Cómo reportas calidad cuando no hay producción?</li><li>¿Qué representa <code>horas × operarios</code> en este caso?</li><li>¿Reiniciar el kernel borra el texto guardado del notebook?</li><li>¿Qué riesgo hay en una unión con claves duplicadas?</li><li>¿Mayor producción implica mayor productividad?</li></ol>
+<details><summary>Respuestas razonadas</summary>
+<ol><li>Asignación frente a comparación.</li><li>Texto (<code>str</code>), que se convierte según el significado esperado.</li><li>2, 3 y 4; el límite superior se excluye.</li><li>Mostrar frente a devolver para reutilizar.</li><li>Un arreglo <code>[2, 4]</code> mediante multiplicación elemento a elemento.</li><li><code>df.loc[(condicion1) &amp; (condicion2)]</code>, con paréntesis.</li><li>Los volúmenes pueden diferir; divide las sumas.</li><li>No definida/ausente, sin inventar 0 % o 100 %.</li><li>Horas-persona si todos trabajan la duración indicada.</li><li>No; elimina el estado de ejecución en memoria.</li><li>Multiplicar filas e inflar agregaciones.</li><li>No; productividad relaciona resultado y recurso consumido.</li></ol>
+</details>
+<h3>Ticket de salida</h3>
+<p>Completa: «Antes pensaba…; ahora puedo…; todavía necesito practicar…». Explica sin código por qué la calidad global requiere ponderación.</p>
+<h3>Glosario rápido</h3>
+<p><strong>Kernel:</strong> proceso que ejecuta las celdas. <strong>Variable:</strong> nombre asociado a un valor. <strong>Booleano:</strong> verdadero/falso. <strong>Iteración:</strong> una repetición. <strong>Función:</strong> operación reutilizable con entradas y salida. <strong>Vectorizar:</strong> operar sobre un arreglo. <strong>DataFrame:</strong> tabla con índice y columnas. <strong>NaN:</strong> ausencia numérica. <strong>Agregación:</strong> resumen de varios registros. <strong>Indicador:</strong> medida con definición y unidad. <strong>Reproducibilidad:</strong> obtener el resultado con los mismos datos, pasos y entorno.</p>
+<h3>Consulta oficial para seguir aprendiendo</h3>
+<ul><li><a href="https://docs.python.org/es/3/tutorial/">Tutorial de Python en español</a></li><li><a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html">Instalación de JupyterLab</a></li><li><a href="https://research.google.com/colaboratory/faq.html">Preguntas frecuentes de Google Colab</a></li><li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html">NumPy para principiantes</a></li><li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">Tutoriales de pandas</a></li></ul>
+<p>El desarrollo pedagógico, los ejercicios y el caso son originales. Las referencias apoyan la consulta de sintaxis y entornos; no sustituyen la práctica guiada.</p><label class="complete"><input id="done-18" type="checkbox"> Ya revisé y practiqué este bloque</label></section><section class="card" id="laboratorio"><span class="badge">LABORATORIO INTERACTIVO</span><h2>🏭 ¿Producir más siempre significa mejorar?</h2><p>Cambia los datos de un turno, calcula los indicadores y guarda hasta seis escenarios para compararlos. Antes de ejecutar, predice el resultado.</p><form id="sim-form" novalidate><div class="grid"><label>Unidades producidas<input id="p" type="number" min="0" step="1" value="1000"></label><label>Unidades defectuosas<input id="d" type="number" min="0" step="1" value="50"></label><label>Horas de turno<input id="h" type="number" min="0.1" step="0.5" value="8"></label><label>Operarios<input id="o" type="number" min="1" step="1" value="4"></label><label>Meta de producción<input id="m" type="number" min="1" step="1" value="1000"></label></div><div class="actions"><button type="submit">▶ Calcular indicadores</button><button type="button" id="save-scenario" class="secondary">Guardar escenario</button></div><p id="sim-error" class="error" role="alert"></p></form><div aria-live="polite"><div class="grid"><div class="box">Unidades buenas<div id="good" class="result"></div></div><div class="box">Calidad<div id="quality" class="result"></div></div><div class="box">Productividad laboral<div id="productivity" class="result"></div><small>Buenas / hora-persona</small></div><div class="box">Cumplimiento<div id="compliance" class="result"></div></div></div><p id="status" class="box green"></p></div><details><summary>Ver el equivalente en Python de este escenario</summary><div class="code-wrap"><button type="button" class="copy">Copiar</button><pre><code id="sim-code"></code></pre></div></details><h3>Compara tus experimentos</h3><p id="scenario-empty" class="empty">Todavía no has guardado escenarios.</p><div class="table-scroll"><table><thead><tr><th>Escenario</th><th>Producidas</th><th>Defectuosas</th><th>Horas</th><th>Operarios</th><th>Buenas</th><th>Calidad</th><th>Buenas/h-persona</th></tr></thead><tbody id="scenario-body"></tbody></table></div><button type="button" id="clear-scenarios" class="secondary">Limpiar comparación</button><div class="box yellow"><strong>Supuestos:</strong> todos los operarios trabajan la duración indicada; las unidades defectuosas se cuentan una vez. Los umbrales de 95 % y 98 % son didácticos. Esta calculadora no predice cómo cambiaría la operación al reducir personal.</div><h3>Tres desafíos para discutir</h3><ol><li>Reduce de 50 a 20 unidades defectuosas sin cambiar la producción. ¿Cuántas unidades buenas recuperas?</li><li>Cambia de cuatro a tres operarios. ¿Por qué el resultado matemático no basta para recomendar ese cambio?</li><li>Registra cero producidas y cero defectuosas. Explica por qué la productividad es cero y la calidad no está definida.</li></ol></section>
+<section class="card" id="comparador"><span class="badge">LECTURA DE DATOS</span><h2>📊 Dos líneas, tres formas de comparar</h2><p>Resultados del conjunto original de doce registros. Escoge un indicador y observa qué línea destaca.</p><label for="metric">Indicador a comparar</label><select id="metric"><option value="p">Producción total</option><option value="q">Calidad global</option><option value="prod">Productividad laboral</option></select><div id="bars" aria-live="polite"></div><p id="chart-unit" class="note"></p><p id="chart-reading" class="box green" aria-live="polite"></p><p>La calidad se calcula como razón de sumas. Los turnos no se promedian sin tener en cuenta sus volúmenes.</p></section><section class="card quiz" id="evaluacion"><span class="badge">AUTOEVALUACIÓN</span><h2>📋 Comprueba lo que aprendiste</h2><p>Responde y recibe retroalimentación. Puedes volver a intentarlo; tus respuestas no se envían ni se usan como nota oficial.</p><fieldset><legend>1. ¿Qué diferencia hay entre = y ==?</legend><label><input type="radio" name="q0" value="0">Asignar y comparar</label><label><input type="radio" name="q0" value="1">Ambos asignan</label><label><input type="radio" name="q0" value="2">Ambos comparan</label><p class="feedback" id="feedback-0"></p></fieldset><fieldset><legend>2. ¿Qué devuelve input()?</legend><label><input type="radio" name="q1" value="0">Un entero</label><label><input type="radio" name="q1" value="1">Texto (str)</label><label><input type="radio" name="q1" value="2">Una lista</label><p class="feedback" id="feedback-1"></p></fieldset><fieldset><legend>3. ¿Qué produce range(2, 5)?</legend><label><input type="radio" name="q2" value="0">2, 3, 4, 5</label><label><input type="radio" name="q2" value="1">1, 2, 3, 4</label><label><input type="radio" name="q2" value="2">2, 3, 4</label><p class="feedback" id="feedback-2"></p></fieldset><fieldset><legend>4. ¿Qué permite reutilizar el resultado de una función?</legend><label><input type="radio" name="q3" value="0">print</label><label><input type="radio" name="q3" value="1">return</label><label><input type="radio" name="q3" value="2">Un comentario</label><p class="feedback" id="feedback-3"></p></fieldset><fieldset><legend>5. ¿Qué produce np.array([1, 2]) * 2?</legend><label><input type="radio" name="q4" value="0">[2, 4]</label><label><input type="radio" name="q4" value="1">[1, 2, 1, 2]</label><label><input type="radio" name="q4" value="2">[3, 4]</label><p class="feedback" id="feedback-4"></p></fieldset><fieldset><legend>6. ¿Cómo combinas dos condiciones en pandas?</legend><label><input type="radio" name="q5" value="0">Con and sin paréntesis</label><label><input type="radio" name="q5" value="1">Con una coma</label><label><input type="radio" name="q5" value="2">Con & y cada condición entre paréntesis</label><p class="feedback" id="feedback-5"></p></fieldset><fieldset><legend>7. ¿Cómo calculas la calidad global?</legend><label><input type="radio" name="q6" value="0">Promedio simple de porcentajes</label><label><input type="radio" name="q6" value="1">Suma de buenas / suma de producidas</label><label><input type="radio" name="q6" value="2">Suma de porcentajes</label><p class="feedback" id="feedback-6"></p></fieldset><fieldset><legend>8. Si no hay producción, la calidad es…</legend><label><input type="radio" name="q7" value="0">0 %</label><label><input type="radio" name="q7" value="1">100 %</label><label><input type="radio" name="q7" value="2">No definida</label><p class="feedback" id="feedback-7"></p></fieldset><fieldset><legend>9. ¿Qué mide horas × operarios en este caso?</legend><label><input type="radio" name="q8" value="0">Horas-persona</label><label><input type="radio" name="q8" value="1">Horas de reloj de la planta</label><label><input type="radio" name="q8" value="2">Unidades por persona</label><p class="feedback" id="feedback-8"></p></fieldset><fieldset><legend>10. Al reiniciar el kernel…</legend><label><input type="radio" name="q9" value="0">Se borra el notebook guardado</label><label><input type="radio" name="q9" value="1">Se pierde el estado en memoria</label><label><input type="radio" name="q9" value="2">Se eliminan todos los CSV</label><p class="feedback" id="feedback-9"></p></fieldset><fieldset><legend>11. ¿Qué riesgo hay al unir tablas con claves repetidas?</legend><label><input type="radio" name="q10" value="0">Multiplicar filas y totales</label><label><input type="radio" name="q10" value="1">Convertir siempre números a texto</label><label><input type="radio" name="q10" value="2">Borrar automáticamente las tablas</label><p class="feedback" id="feedback-10"></p></fieldset><fieldset><legend>12. ¿Mayor producción implica mayor productividad?</legend><label><input type="radio" name="q11" value="0">Siempre</label><label><input type="radio" name="q11" value="1">Solo si la calidad supera 98 %</label><label><input type="radio" name="q11" value="2">No necesariamente; depende del recurso utilizado</label><p class="feedback" id="feedback-11"></p></fieldset><button type="button" id="grade">Comprobar respuestas</button><p id="quiz-result" class="feedback" role="status"></p><h3>Tu ticket de salida</h3><label for="notes">Antes pensaba… / Ahora puedo… / Necesito practicar…</label><textarea id="notes" placeholder="Escribe una reflexión y una conclusión industrial con cifras y unidades."></textarea><p class="note">Tus notas permanecen en este navegador cuando el almacenamiento está disponible. Descárgalas para conservarlas o entregarlas.</p><button type="button" id="download-notes" class="secondary">Descargar mi reflexión</button></section><section class="card" id="recursos"><span class="badge">MATERIALES DE LA CLASE</span><h2>📥 Continúa la práctica</h2><div class="actions"><a class="button" href="https://colab.research.google.com/github/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/blob/main/clase-python/Introduccion_Python_Analitica_Industrial.ipynb" target="_blank" rel="noopener">Abrir notebook en Colab ↗</a><a class="button secondary" href="clase-python/Introduccion_Python_Analitica_Industrial.ipynb" download>Descargar notebook</a><a class="button secondary" href="clase-python/produccion.csv" download>Descargar datos CSV</a><a class="button secondary" href="clase-python/analizar_produccion.py" download>Descargar programa</a></div><p>En Colab, guarda una copia en Drive y ejecuta las celdas en orden. Los ejemplos y los datos están incluidos en el notebook.</p><p><a href="aula-visual.html">Abrir los laboratorios y la práctica</a> · <a href="https://github.com/karendayana2590-bot/1682913-ANAL-TICA-DE-DATOS/tree/main/clase-python">Ver materiales en GitHub</a></p></section></main><footer>Analítica de Datos · Ingeniería Industrial · Código 1682913<br>Material educativo con datos sintéticos · Python, NumPy y pandas</footer><script>const $=id=>document.getElementById(id);const store={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.parentElement.querySelector('code').textContent);b.textContent='Copiado'}catch{b.textContent='Selecciona el código para copiar'} }));
+function progress(){let boxes=[...document.querySelectorAll('.complete input')],n=boxes.filter(x=>x.checked).length;if($('progress-text')){$('progress-text').textContent=n+' de '+boxes.length+' bloques revisados';$('progress-bar').style.width=(n/boxes.length*100)+'%'}}
+document.querySelectorAll('.complete input').forEach(c=>{c.checked=store.get('python-course-v1-'+c.id)==='true';c.addEventListener('change',()=>{store.set('python-course-v1-'+c.id,c.checked);progress()})});progress();
+let scenarios=[];let current=null;
+function calculate(){const p=Number($('p').value),d=Number($('d').value),h=Number($('h').value),o=Number($('o').value),m=Number($('m').value);const fields=['p','d','h','o','m'];
+if(fields.some(id=>$(id).value.trim()==='')||![p,d,h,o,m].every(Number.isFinite)||![p,d,o,m].every(Number.isInteger)||p<0||d<0||d>p||h<=0||o<=0||m<=0){$('sim-error').textContent='Revisa las entradas: conteos enteros, defectuosas entre 0 y producidas, horas positivas, operarios y meta enteros positivos.';current=null;return}
+$('sim-error').textContent='';const b=p-d,q=p?b/p*100:null,prod=b/(h*o),cum=p/m*100;current={p,d,h,o,m,b,q,prod,cum};$('good').textContent=b.toLocaleString('es-CO');$('quality').textContent=q===null?'No definida':q.toFixed(2)+' %';$('productivity').textContent=prod.toFixed(2);$('compliance').textContent=cum.toFixed(2)+' %';$('status').textContent=q===null?'Sin producción':q>=98?'Verde: calidad ≥ 98 %':q>=95?'Amarillo: calidad entre 95 % y 98 %':'Rojo: calidad < 95 %';$('sim-code').textContent=`producidas = ${p}\ndefectuosas = ${d}\nhoras = ${h}\noperarios = ${o}\nmeta = ${m}\nbuenas = producidas - defectuosas\ncalidad = buenas / producidas * 100 if producidas else None\nproductividad = buenas / (horas * operarios)\ncumplimiento = producidas / meta * 100\nprint(buenas, calidad, productividad, cumplimiento)`;}
+if($('sim-form')){$('sim-form').addEventListener('submit',e=>{e.preventDefault();calculate()});calculate();$('save-scenario').addEventListener('click',()=>{calculate();if(!current)return;if(scenarios.length>=6){$('sim-error').textContent='Puedes comparar hasta seis escenarios. Limpia la tabla para comenzar otra comparación.';return}scenarios.push({...current});renderScenarios()});$('clear-scenarios').addEventListener('click',()=>{scenarios=[];renderScenarios();$('sim-error').textContent=''});}
+function renderScenarios(){$('scenario-body').innerHTML=scenarios.map((s,i)=>`<tr><td>${i+1}</td><td>${s.p}</td><td>${s.d}</td><td>${s.h}</td><td>${s.o}</td><td>${s.b}</td><td>${s.q===null?'No definida':s.q.toFixed(2)+' %'}</td><td>${s.prod.toFixed(2)}</td></tr>`).join('');$('scenario-empty').hidden=scenarios.length>0;}
+const caseData=[{linea:'A',p:6230,b:6044,hp:192},{linea:'B',p:5710,b:5507,hp:144}];function chart(){const key=$('metric').value;const values=caseData.map(x=>key==='p'?x.p:key==='q'?x.b/x.p*100:x.b/x.hp),max=key==='q'?100:Math.max(...values);const unit=key==='p'?'unidades':key==='q'?'%':'buenas/h-persona';$('bars').innerHTML=values.map((v,i)=>`<div class="bar-row"><strong>Línea ${caseData[i].linea}</strong><div class="bar-track"><div class="bar-fill" style="width:${v/max*100}%"></div></div><span>${v.toFixed(key==='p'?0:2)}</span></div>`).join('');$('chart-unit').textContent='Unidad: '+unit+'. Barras con origen en cero.';$('chart-reading').textContent=key==='p'?'A produce más: 6230 frente a 5710 unidades.':key==='q'?'A tiene mayor calidad global: 97.01 % frente a 96.44 %.':'B alcanza 38.24 buenas/hora-persona frente a 31.48 de A. Los recursos consumidos son distintos.';}if($('metric')){$('metric').addEventListener('change',chart);chart();}
+const quizAnswers=[0,1,2,1,0,2,1,2,0,1,0,2];const explanations=['= asigna; == compara.','input devuelve texto: str.','El límite superior se excluye: 2, 3, 4.','return devuelve un valor reutilizable.','NumPy multiplica elemento a elemento: [2, 4].','Usa & y paréntesis entre condiciones vectorizadas.','Divide las sumas: cada turno puede tener distinto volumen.','Sin producción, la calidad no está definida.','Representa horas-persona si todos trabajan las horas indicadas.','Reiniciar elimina variables en memoria, no el contenido guardado.','Una unión con claves repetidas puede multiplicar filas.','La productividad depende también del recurso consumido.'];
+if($('grade'))$('grade').addEventListener('click',()=>{let score=0,answered=0;quizAnswers.forEach((a,i)=>{const selected=document.querySelector('input[name="q'+i+'"]:checked');if(selected)answered++;const correct=selected&&Number(selected.value)===a;if(correct)score++;$('feedback-'+i).textContent=(selected?(correct?'Correcto. ':'Revisa tu respuesta. '):'Sin responder. ')+explanations[i]});$('quiz-result').textContent=score+' de 12 correctas. Respondidas: '+answered+'/12. Esta autoevaluación no envía notas al docente.'});
+if($('notes')){$('notes').value=store.get('python-course-notes')||'';$('notes').addEventListener('input',()=>store.set('python-course-notes',$('notes').value));$('download-notes').addEventListener('click',()=>{const blob=new Blob(['Mi reflexión · Introducción a Python\n\n'+$('notes').value],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mi-reflexion-python.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)})}
+</script></body></html>
